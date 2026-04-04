@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Quotation - Equogreen</title>
+    <!-- Using Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sidebar: '#3a5a40', /* Sidebar Dark Green */
+                            topbar: '#7a9675', /* Topbar Olive Green */
+                            bg: '#f8f6f0', /* Main Content Background */
+                            main: '#3a5a40', /* Main Green for buttons */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: white;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: opacity 0.2s;
+        }
+        .menu-item:hover {
+            opacity: 0.8;
+        }
+        .menu-item i {
+            width: 1.5rem;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        
+        /* Form Card */
+        .quotation-card {
+            background-color: white;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Buttons */
+        .btn-green {
+            background-color: #3b5a3f;
+            color: white;
+            border: 1px solid #3b5a3f;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .btn-green:hover {
+            background-color: #2f4732;
+        }
+        
+        .btn-outline {
+            border: 1px solid #4b5563;
+            background-color: white;
+            color: #111827;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .btn-outline:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-sidebar flex flex-col flex-shrink-0">
+        <!-- Logo -->
+        <div class="h-32 flex items-center justify-center p-4 mt-2">
+            <img src="logo.png" alt="Equogreen Quotation Logo">
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 px-6 mt-4 flex flex-col gap-2">
+            <a href="dashboard.html" class="menu-item opacity-100">
+                <i class="fa-solid fa-shapes"></i>
+                <span>Dashboard</span>
+            </a>
+            <!-- Only Dashboard is listed as it's the vendor view -->
+        </nav>
+    </aside>
+
+    <!-- Main Content wrapper -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Topbar -->
+        <header class="bg-brand-topbar h-32 flex items-center justify-between px-8 text-white flex-shrink-0">
+            <!-- Left: Title & Back -->
+            <div class="flex items-center gap-4">
+                <a href="dashboard_vendor.html" class="text-white hover:text-gray-200 transition">
+                    <i class="fa-regular fa-circle-left text-4xl font-light"></i>
+                </a>
+                <div class="leading-tight mt-1">
+                    <h1 class="text-3xl font-bold mb-1">Buat Quotation</h1>
+                    <p class="text-base text-gray-100">Isi quotation sesuai ketentuan yang berlaku</p>
+                </div>
+            </div>
+
+            <!-- Right: User Actions -->
+            <div class="flex items-center gap-5 text-3xl">
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-bell text-2xl mb-1"></i>
+                </a>
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 overflow-y-auto w-full p-8 relative">
+            <div class="max-w-4xl mx-auto flex flex-col pt-2">
+                
+                <!-- Page Header -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-black">Pengadaan Barang ATK</h1>
+                    <p class="text-xl text-gray-600 mt-1">ATK</p>
+                </div>
+
+                <!-- Form Card -->
+                <div class="quotation-card">
+                    <!-- Deadline Box -->
+                    <div class="bg-[#f5eeea] rounded-md p-4 mb-6">
+                        <p class="text-gray-800 font-medium">Tenggat Waktu: Selasa, 12 Februari 2026, 11:20</p>
+                    </div>
+
+                    <!-- Description Area -->
+                    <div class="flex-1">
+                        <p class="text-gray-800 font-medium">Deskripsi Spesifikasi Barang</p>
+                        <!-- Future content can go here -->
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-8 space-y-3">
+                        <button type="button" class="btn-green">Unduh Form</button>
+                        <button type="button" class="btn-green">Unggah Form</button>
+                        <button type="submit" class="btn-outline">Kirim</button>
+                    </div>
+                </div>
+
+                <!-- Footer Text -->
+                <div class="mt-4 text-gray-800 font-medium pb-8">
+                    Tata cara quotation <a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Unduh</a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

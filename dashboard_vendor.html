@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Vendor - Equogreen</title>
+    <!-- Using Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sidebar: '#3a5a40', /* Sidebar Dark Green */
+                            topbar: '#7a9675', /* Topbar Olive Green */
+                            bg: '#f8f6f0', /* Main Content Background */
+                            main: '#3a5a40', /* Main Green for buttons */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: white;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: opacity 0.2s;
+        }
+        .menu-item:hover {
+            opacity: 0.8;
+        }
+        .menu-item i {
+            width: 1.5rem;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        
+        /* Dashboard Card */
+        .dashboard-card {
+            background-color: white;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        .btn-outline {
+            border: 1px solid #4b5563;
+            background-color: white;
+            color: #4b5563;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-sidebar flex flex-col flex-shrink-0">
+        <!-- Logo -->
+        <div class="h-32 flex items-center justify-center p-4 mt-2">
+            <img src="logo.png" alt="Equogreen Quotation Logo">
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 px-6 mt-4 flex flex-col gap-2">
+            <a href="#" class="menu-item opacity-100">
+                <i class="fa-solid fa-shapes"></i>
+                <span>Dashboard</span>
+            </a>
+            <!-- Since this is a different account type as per user, I'm omitting the other account's links -->
+        </nav>
+    </aside>
+
+    <!-- Main Content wrapper -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Topbar -->
+        <header class="bg-brand-topbar h-32 flex items-center justify-between px-8 text-white flex-shrink-0">
+            <!-- Left: Title -->
+            <div class="flex items-center gap-4">
+                <div class="leading-tight mt-1">
+                    <h1 class="text-3xl font-bold mb-1">Dashboard</h1>
+                    <p class="text-base text-gray-100">Kelola semua quotation Anda dalam satu tempat</p>
+                </div>
+            </div>
+
+            <!-- Right: User Actions -->
+            <div class="flex items-center gap-5 text-3xl">
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-bell text-2xl mb-1"></i>
+                </a>
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <a href="#" class="hover:text-gray-200 transition">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 overflow-y-auto w-full p-8 relative">
+            <div class="max-w-4xl mx-auto flex flex-col gap-6">
+                
+                <!-- Pengumuman Card -->
+                <div class="dashboard-card h-40 flex items-center justify-center">
+                    <h2 class="text-xl font-bold text-black">Pengumuman</h2>
+                </div>
+
+                <!-- Daftar Quotation Card -->
+                <div class="dashboard-card">
+                    <h2 class="text-xl font-bold text-black mb-6">Daftar Quotation</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Quotation Item 1 -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-400">
+                            <div>
+                                <h3 class="font-bold text-black">Pengadaan Barang ATK</h3>
+                                <p class="text-sm text-gray-500 mt-1">ATK</p>
+                            </div>
+                            <a href="buat_quotation.html" class="btn-outline text-center inline-block">Buka Quotation</a>
+                        </div>
+                        
+                        <!-- Quotation Item 2 -->
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-400">
+                            <div>
+                                <h3 class="font-bold text-black">Pengadaan Barang Furniture</h3>
+                                <p class="text-sm text-gray-500 mt-1">Furniture</p>
+                            </div>
+                            <a href="buat_quotation.html" class="btn-outline text-center inline-block">Buka Quotation</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
