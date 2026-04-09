@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,24 +29,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         /* Custom Input Styling to match design */
         .form-input {
             width: 100%;
-            border: 1px solid #4b5563; /* gray-600 */
-            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid #4b5563;
+            /* gray-600 */
+            border-radius: 0.375rem;
+            /* rounded-md */
             padding: 0.5rem 0.75rem;
-            color: #1f2937; /* gray-800 */
+            color: #1f2937;
+            /* gray-800 */
             background-color: #ffffff;
             outline: none;
             transition: border-color 0.15s ease-in-out;
         }
+
         .form-input:focus {
             border-color: #3a5a40;
             box-shadow: 0 0 0 2px rgba(58, 90, 64, 0.2);
         }
-        
+
         .menu-item {
             display: flex;
             align-items: center;
@@ -56,15 +63,17 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             transition: opacity 0.2s;
         }
+
         .menu-item:hover {
             opacity: 0.8;
         }
+
         .menu-item i {
             width: 1.5rem;
             text-align: center;
             font-size: 1.25rem;
         }
-        
+
         /* Batch item styles */
         .batch-item {
             display: flex;
@@ -78,11 +87,13 @@
             font-weight: 700;
             transition: box-shadow 0.15s;
         }
+
         .batch-item:hover {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
+
 <body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
 
     <!-- Sidebar -->
@@ -99,14 +110,15 @@
                 <i class="fa-solid fa-shapes"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="batch_barang.html" class="menu-item opacity-100"> <!-- active menu item styling -->
+            <a href="batch_barang" class="menu-item opacity-100"> <!-- active menu item styling -->
                 <i class="fa-solid fa-database"></i>
                 <span>Batch Barang</span>
             </a>
             <a href="#" class="menu-item">
                 <div class="relative">
                     <i class="fa-regular fa-bell"></i>
-                    <i class="fa-solid fa-plus absolute -bottom-1 -right-1 text-[10px] bg-brand-sidebar rounded-full"></i>
+                    <i
+                        class="fa-solid fa-plus absolute -bottom-1 -right-1 text-[10px] bg-brand-sidebar rounded-full"></i>
                 </div>
                 <span>Kelola Notifikasi</span>
             </a>
@@ -115,9 +127,10 @@
 
     <!-- Main Content wrapper -->
     <div class="flex-1 flex flex-col h-screen overflow-hidden">
-        
+
         <!-- Topbar -->
-        <header class="bg-brand-topbar flex flex-col justify-between px-8 pt-8 pb-0 text-white flex-shrink-0 border-b border-[#6a8c66]">
+        <header
+            class="bg-brand-topbar flex flex-col justify-between px-8 pt-8 pb-0 text-white flex-shrink-0 border-b border-[#6a8c66]">
             <!-- Top section: Title & User Actions -->
             <div class="flex items-start justify-between">
                 <!-- Left: Title & Back -->
@@ -141,30 +154,34 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Tabs Area -->
             <div class="flex gap-8 mt-6">
                 <!-- Active Tab -->
-                <a href="batch_barang.html" class="font-medium text-white pb-2 border-b-2 border-white">Buat Batch</a>
+                <a href="batch_barang" class="font-medium text-white pb-2 border-b-2 border-white">Buat Batch</a>
                 <!-- Inactive Tab -->
-                <a href="periksa_barang.html" class="font-medium text-[#d3e0d1] hover:text-white pb-2 border-b-2 border-transparent hover:border-white transition">Periksa Barang</a>
+                <a href="periksa_barang"
+                    class="font-medium text-[#d3e0d1] hover:text-white pb-2 border-b-2 border-transparent hover:border-white transition">Periksa
+                    Barang</a>
             </div>
         </header>
 
         <!-- Main Workspace -->
         <main class="flex-1 overflow-y-auto w-full p-8 relative">
             <div class="max-w-4xl mx-auto flex flex-col">
-                
+
                 <!-- Controls Row -->
                 <div class="flex justify-between items-center mb-6">
                     <!-- Tambah Batch Button -->
-                    <a href="tambah_batch.html" class="bg-[#3a5a40] text-white px-4 py-2 rounded-md font-bold text-sm flex items-center gap-2 hover:bg-[#2e4733] transition shadow-sm border border-[#2e4733] inline-block">
+                    <a href="tambah_batch"
+                        class="bg-[#3a5a40] text-white px-4 py-2 rounded-md font-bold text-sm flex items-center gap-2 hover:bg-[#2e4733] transition shadow-sm border border-[#2e4733] inline-block">
                         <i class="fa-solid fa-plus"></i> Tambah Batch
                     </a>
-                    
+
                     <!-- Search bar -->
                     <div class="w-64">
-                        <input type="text" placeholder="Search" class="form-input rounded-lg border-gray-400 py-1.5 focus:border-brand-main focus:ring-0 shadow-sm" />
+                        <input type="text" placeholder="Search"
+                            class="form-input rounded-lg border-gray-400 py-1.5 focus:border-brand-main focus:ring-0 shadow-sm" />
                     </div>
                 </div>
 
@@ -180,18 +197,18 @@
     <script>
         // Data batch (contoh 1-7)
         const batchContainer = document.getElementById('batch-list-container');
-        
+
         for (let i = 1; i <= 7; i++) {
             const batchHTML = `
                 <div class="batch-item relative">
-                    <a href="batch1.html" class="flex-1 hover:text-[#3a5a40] transition block w-full">Batch ${i}</a>
+                    <a href="batch1" class="flex-1 hover:text-[#3a5a40] transition block w-full">Batch ${i}</a>
                     <button onclick="toggleDropdown(event, 'dp-${i}')" class="px-2 py-0.5 text-gray-700 hover:text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded transition absolute right-2">
                         <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
                     </button>
                     
                     <!-- Actions Dropdown -->
                     <div id="dp-${i}" class="dropdown-menu hidden absolute right-0 top-10 w-32 bg-white border border-gray-400 z-10 shadow-md text-sm font-bold flex-col overflow-hidden">
-                        <a href="edit_batch.html" class="block px-4 py-1.5 border-b border-gray-400 text-black hover:bg-gray-100 transition">Edit</a>
+                        <a href="edit_batch" class="block px-4 py-1.5 border-b border-gray-400 text-black hover:bg-gray-100 transition">Edit</a>
                         <a href="#" class="block px-4 py-1.5 text-red-600 hover:bg-gray-100 transition">Hapus</a>
                     </div>
                 </div>
@@ -203,7 +220,7 @@
         function toggleDropdown(event, id) {
             event.preventDefault();
             event.stopPropagation(); // Mencegah event click merambat ke window
-            
+
             // Tutup semua menu dropdown selain yang sedang di-klik
             document.querySelectorAll('.dropdown-menu').forEach(el => {
                 if (el.id !== id) {
@@ -211,7 +228,7 @@
                     el.classList.remove('flex');
                 }
             });
-            
+
             // Toggle menu yang dipilih
             const menu = document.getElementById(id);
             if (menu.classList.contains('hidden')) {
@@ -224,7 +241,7 @@
         }
 
         // Tutup semua dropdown jika user meng-klik di luar area menu
-        window.addEventListener('click', function(e) {
+        window.addEventListener('click', function (e) {
             document.querySelectorAll('.dropdown-menu').forEach(el => {
                 el.classList.add('hidden');
                 el.classList.remove('flex');
@@ -232,4 +249,5 @@
         });
     </script>
 </body>
+
 </html>
