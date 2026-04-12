@@ -13,7 +13,8 @@
                 extend: {
                     colors: {
                         brand: {
-                            bg: '#f1f5fa', /* Main Content Background, light bluish gray */
+                            bg: '#f1f5fa',
+                            /* Main Content Background, light bluish gray */
                         }
                     },
                     fontFamily: {
@@ -38,7 +39,7 @@
     <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
         <!-- Logo -->
         <div class="h-28 flex items-center px-6 mt-2">
-            <img src="logo2.png" alt="Equogreen Logo">
+            <img src="gambar/logo2.png" alt="Equogreen Logo">
         </div>
 
         <div class="px-8 mt-4">
@@ -104,12 +105,33 @@
                     <h1 class="text-[32px] font-bold text-black ml-5">2026</h1>
 
                     <div class="flex items-center gap-6 ml-10 mt-1">
-                        <div class="pb-[1px] border-b-2 border-[#8196ff]">
-                            <a href="#" class="text-[#8196ff] font-medium text-[16px] xl:text-[18px]">Buat Batch</a>
-                        </div>
-                        <div class="pb-1">
-                            <a href="#" class="text-black font-medium text-[16px] xl:text-[18px]">Periksa Barang</a>
-                        </div>
+
+                        <a href="#"
+                            class="relative text-black font-medium text-[16px] xl:text-[18px] pb-1
+       transition-colors duration-300
+       hover:text-[#8196ff]
+
+       after:content-[''] after:absolute after:left-0 after:bottom-0 
+       after:w-0 after:h-[2px] after:bg-[#8196ff]
+       after:transition-all after:duration-300
+       hover:after:w-full">
+
+                            Buat Batch
+                        </a>
+
+                        <a href="#"
+                            class="relative text-black font-medium text-[16px] xl:text-[18px] pb-1
+       transition-colors duration-300
+       hover:text-[#8196ff]
+
+       after:content-[''] after:absolute after:left-0 after:bottom-0 
+       after:w-0 after:h-[2px] after:bg-[#8196ff]
+       after:transition-all after:duration-300
+       hover:after:w-full">
+
+                            Periksa Barang
+                        </a>
+
                     </div>
                 </div>
 
@@ -148,8 +170,8 @@
 
                         <!-- Batch 1 -->
                         <div
-                            class="group border border-gray-400 rounded-lg flex flex-col bg-white overflow-hidden shadow-sm transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                            <div onclick="window.location.href='batch1.html'"
+                            onclick="window.location.href='tambah_barang'" class="group border border-gray-400 rounded-lg flex flex-col bg-white overflow-hidden shadow-sm transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                            <div
                                 class="bg-[#fdf3df] py-4 border-b border-gray-400 text-center cursor-pointer hover:brightness-95 transition">
                                 <h2 class="text-lg font-bold text-black">Batch 1</h2>
                             </div>

@@ -34,7 +34,7 @@
     <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
         <!-- Logo -->
         <div class="h-28 flex items-center px-6 mt-2">
-            <img src="logo2.png" alt="Equogreen Logo">
+            <img src="gambar/logo2.png" alt="Equogreen Logo">
         </div>
 
         <div class="px-8 mt-4">
@@ -170,7 +170,7 @@
                     <!-- Action Buttons -->
                     <div class="space-y-3 w-full">
                         <button type="button" class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
-                            Download File
+                            Download Template
                         </button>
                         <button type="button" class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
                             Upload File
@@ -178,7 +178,10 @@
                         <div class="w-full pt-1 pb-1">
                             <div class="border-[1.5px] border-gray-400 rounded-lg py-7 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition w-full">
                                 <i class="fa-solid fa-arrow-up-from-bracket text-[#a0a0a0] mb-2 text-lg"></i>
-                                <span class="text-[#a0a0a0] text-[15px]">Upload File</span>
+                                <span class="text-[#a0a0a0] text-[15px]">Upload File
+
+            
+                                </span>
                             </div>
                             <p class="text-[#a0a0a0] text-[13px] mt-1.5 ml-1">Accepted files: All file types</p>
                         </div>

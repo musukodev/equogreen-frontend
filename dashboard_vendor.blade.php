@@ -51,7 +51,7 @@
         class="hidden lg:flex w-64 bg-white flex flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
         <!-- Logo -->
         <div class="h-28 flex items-center px-6 mt-2">
-            <img src="logo2.png" alt="Equogreen Logo">
+            <img src="gambar/logo2.png" alt="Equogreen Logo">
         </div>
 
         <div class="px-8 mt-4">
@@ -212,7 +212,7 @@
                         </div>
 
                         <p id="timer1" class="text-[#d71919] font-extrabold text-[11px] mb-5"></p>
-                        <a href="buat_quotation.html"
+                        <a href="buat_quotation"
                             class="mt-auto block w-full bg-[#1e40ff] text-white text-center font-bold text-sm py-3 rounded-lg hover:bg-blue-700 transition">
                             Buka Quotation
                         </a>
