@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periksa Barang - 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="dashboard-kategori.css">
+    <link rel="stylesheet" href="periksa-barang-detail.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="gambar/logo.png" alt="Equogreen Logo" class="sidebar-logo-icon">
+                <span class="logo-text">Equogreen</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="dashboard-kategori.html" class="nav-item">
+                        <img src="gambar/dashboard layout.png" alt="Dashboard logo">
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="periksa-barang.html" class="nav-item active">
+                        <img src="gambar/search database.png" alt="Periksa Barang logo">
+                        <span>Periksa Barang</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <img src="gambar/add reminder.png" alt="Kelola Notifikasi logo">
+                        <span>Kelola Notifikasi</span>
+                    </a>
+                </div>
+
+                <div class="nav-section settings-section">
+                    <span class="nav-section-title">Pengaturan</span>
+                    <a href="#" class="nav-item">
+                        <i class="ph ph-gear"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item text-danger">
+                        <i class="ph ph-sign-out"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Custom Topbar for Detail -->
+            <header class="topbar detail-topbar">
+                <div class="detail-topbar-left">
+                    <a href="periksa-barang.html" class="detail-back-btn">
+                        <i class="ph-bold ph-arrow-left"></i>
+                    </a>
+                    <h1 class="detail-title">2026</h1>
+                    
+                    <div class="topbar-tabs">
+                        <a href="#" class="tab-link">Buat Batch</a>
+                        <a href="#" class="tab-link active">Periksa Barang</a>
+                    </div>
+                </div>
+                <div class="detail-topbar-right">
+                    <div class="icon-btn">
+                        <i class="ph-bold ph-bell"></i>
+                    </div>
+                    <div class="user-profile" style="border: none; padding: 0;">
+                        <div class="avatar"><i class="ph-fill ph-user"></i></div>
+                        <div class="header-divider"></div>
+                        <span class="username" style="font-size: 1rem; color: #111;">ATK Corner</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Data Card -->
+                <div class="detail-card">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search">
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="filter-row">
+                        <select class="filter-select">
+                            <option>Batch 1</option>
+                            <option>Batch 2</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>ATK</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nama Vendor</th>
+                                    <th>Quotation</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ATK Corp.</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Pusat ATK</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ATK Corner</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Elektro Site</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ATKKita</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fur&Ture</td>
+                                    <td><a href="#" class="link-cek">Cek</a></td>
+                                    <td>
+                                        <div class="status-icons">
+                                            <i class="ph ph-check check-icon"></i>
+                                            <i class="ph ph-x cross-icon"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
