@@ -25,6 +25,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -47,43 +48,45 @@
 <body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
 
     <!-- Sidebar -->
-    <aside
-        class="hidden lg:flex w-64 bg-white flex flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 flex w-[260px] bg-white flex-col flex-shrink-0 h-full shadow-lg">
         <!-- Logo -->
-        <div class="h-28 flex items-center px-6 mt-2">
-            <img src="gambar/logo2.png" alt="Equogreen Logo">
+        <div class="h-28 flex items-center px-6 mt-2 gap-3">
+            <img src="gambar/logo2.png" alt="Equogreen Logo" class="h-10 object-contain">
+            <span class="text-[20px] font-bold text-black tracking-tight">Equogreen</span>
         </div>
 
-        <div class="px-8 mt-4">
-            <p class="text-sm text-gray-400 font-medium mb-4">Overview</p>
-            <nav class="flex flex-col gap-5">
-                <div>
-                    <a href="#" class="flex items-center gap-3 text-black font-bold mb-2">
-                        <i class="fa-solid fa-border-all text-[26px] text-gray-700"></i>
-                        <span class="text-[20px]">Dashboard</span>
+        <div class="px-8 mt-4 w-full">
+            <p class="text-[14px] text-[#9ca3af] font-medium mb-4">Overview</p>
+            <nav class="flex flex-col gap-[22px] w-full">
+                <div class="w-full">
+                    <a href="dashboard_vendor.html" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
+                        <i class="ph-bold text-[#1f2937] ph-squares-four text-[26px]"></i>
+                        <span class="text-[17px] tracking-tight">Dashboard</span>
                     </a>
-                    <div class="h-[2px] bg-gray-400 w-[155px]"></div>
+                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[135px]"></div>
                 </div>
-                <div>
-                    <a href="#" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-                        <i class="fa-solid fa-clock-rotate-left text-[24px]"></i>
-                        <span class="text-[20px]">Riwayat</span>
+                <div class="w-full">
+                    <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold mb-[10px] hover:text-black transition">
+                        <i class="ph-bold text-[#4b5563] ph-clock-counter-clockwise text-[26px]"></i>
+                        <span class="text-[17px] tracking-tight">Riwayat</span>
                     </a>
-                    <div class="h-[2px] bg-gray-300 w-[130px]"></div>
+                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[100px]"></div>
                 </div>
             </nav>
         </div>
 
-        <div class="px-8 mt-auto mb-10">
-            <p class="text-sm text-gray-400 font-medium mb-4">Pengaturan</p>
-            <nav class="flex flex-col gap-5">
-                <a href="#" class="flex items-center gap-3 text-gray-600 font-bold">
-                    <i class="fa-solid fa-gear text-[20px]"></i>
-                    <span class="text-[17px]">Pengaturan</span>
+        <div class="px-8 mt-auto mb-[40px] w-full">
+            <p class="text-[14px] text-[#9ca3af] font-medium mb-5">Pengaturan</p>
+            <nav class="flex flex-col gap-[22px] w-full">
+                <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold hover:text-black transition">
+                    <i class="ph-bold ph-gear text-[26px]"></i>
+                    <span class="text-[17px] tracking-tight">Pengaturan</span>
                 </a>
-                <a href="#" class="flex items-center gap-3 text-red-500 font-bold">
-                    <i class="fa-solid fa-arrow-right-from-bracket text-[20px]"></i>
-                    <span class="text-[17px]">Logout</span>
+                <a href="#" class="flex items-center gap-3 text-[#ef4444] font-bold hover:text-red-700 transition">
+                    <i class="ph-bold ph-sign-out text-[26px]"></i>
+                    <span class="text-[17px] tracking-tight">Logout</span>
                 </a>
             </nav>
         </div>
@@ -96,32 +99,30 @@
         <main class="flex-1 p-5 sm:p-8 lg:p-10 relative w-full">
 
             <!-- Header -->
-            <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 w-full gap-5">
-                <div class="flex items-center gap-0">
-                    <button
-                        class="lg:hidden w-11 h-11 rounded-lg border border-gray-300 bg-white flex items-center justify-center hover:bg-gray-50 transition mr-4 flex-shrink-0">
-                        <i class="fa-solid fa-bars text-xl text-black"></i>
-                    </button>
-                    <div>
-                        <h1 class="text-3xl md:text-4xl font-extrabold text-black mb-1 md:mb-2 tracking-tight">Dashboard
-                        </h1>
-                        <p class="text-[14px] md:text-[17px] text-gray-700 font-medium tracking-tight">Kelola semua
-                            quotation Anda dalam satu tempat</p>
+            <header class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-6 w-full gap-5">
+                <!-- Left: Title -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center w-full lg:w-auto gap-4 sm:gap-6">
+                    <div class="flex items-center gap-3">
+                        <button onclick="toggleSidebar()" class="lg:hidden w-11 h-11 rounded-lg border border-gray-300 bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition flex-shrink-0">
+                            <i class="ph-bold ph-list text-xl text-black"></i>
+                        </button>
+                        <div class="ml-2">
+                            <h1 class="text-3xl md:text-4xl font-extrabold text-black mb-0.5 tracking-tight">Dashboard</h1>
+                            <p class="text-[14px] md:text-[15px] text-gray-700 font-medium tracking-tight">Kelola semua quotation Anda dalam satu tempat</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Right: User Actions -->
-                <div class="flex items-center gap-3 md:gap-4 self-end lg:self-auto mt-2 lg:mt-0">
-                    <button
-                        class="w-10 h-10 md:w-11 md:h-11 rounded-full border border-gray-400 bg-transparent flex items-center justify-center hover:bg-gray-100 transition flex-shrink-0">
-                        <i class="fa-solid fa-bell text-lg md:text-xl text-black"></i>
+                <div class="flex items-center gap-4 align-middle mt-2 xl:mt-0">
+                    <button class="w-10 h-10 rounded-full border border-black bg-transparent flex items-center justify-center hover:bg-gray-100 transition">
+                        <i class="ph-fill ph-bell text-xl text-black"></i>
                     </button>
-                    <button
-                        class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-black flex items-center justify-center shadow-md flex-shrink-0">
-                        <i class="fa-solid fa-user text-lg md:text-xl text-white"></i>
+                    <button class="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md">
+                        <i class="ph-fill ph-user text-xl text-white"></i>
                     </button>
-                    <div class="h-6 md:h-8 w-px bg-gray-400 mx-1"></div>
-                    <span class="text-[15px] md:text-lg text-gray-800 font-medium whitespace-nowrap">ATK Corner</span>
+                    <div class="h-6 w-[1px] bg-gray-400 mx-1"></div>
+                    <span class="text-[15px] text-black font-medium">ATK Corner</span>
                 </div>
             </header>
 
@@ -304,6 +305,21 @@
         updateTimers();
         setInterval(updateTimers, 1000);
     </script>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+
 </body>
 
 </html>

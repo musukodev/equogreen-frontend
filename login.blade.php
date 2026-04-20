@@ -8,225 +8,78 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="login.css">
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f2f5fd; /* Light blueish grey matching the image */
-    color: #111;
-}
-
-.login-container {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-}
-
-.login-left {
-    flex: 1;
-    flex-basis: 50%;
-    max-width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.login-right {
-    flex: 1;
-    flex-basis: 50%;
-    max-width: 50%;
-    display: flex;
-    background-color: #e0e7ff;
-}
-
-.banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.login-content {
-    width: 100%;
-    max-width: 440px;
-    margin-top: -50px; /* Slight optical adjustment to center it nicely */
-}
-
-.login-header {
-    margin-bottom: 24px;
-}
-
-.login-header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #000;
-}
-
-.login-header p {
-    font-size: 16px;
-    color: #111;
-}
-
-.login-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    border: 1px solid #c8ccd6;
-    overflow: hidden;
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid #c8ccd6;
-    font-weight: 500;
-    font-size: 15px;
-}
-
-.card-header i {
-    font-size: 26px;
-    color: #000;
-}
-
-.card-body {
-    padding: 24px 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 8px;
-    color: #111;
-}
-
-.form-control {
-    width: 100%;
-    height: 46px;
-    border: 1px solid #6b7280;
-    border-radius: 6px;
-    padding: 0 14px;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.form-control::placeholder {
-    color: #9ca3af;
-}
-
-.form-control:focus {
-    border-color: #0436ff;
-}
-
-.forgot-password {
-    text-align: right;
-    margin-top: -10px;
-    margin-bottom: 20px;
-}
-
-.forgot-password a {
-    color: #0436ff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.btn-login {
-    width: 100%;
-    height: 46px;
-    background-color: #0036fc;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-bottom: 24px;
-}
-
-.btn-login:hover {
-    background-color: #002be0;
-}
-
-.register-link {
-    text-align: center;
-    font-size: 14px;
-    color: #111;
-}
-
-.register-link a {
-    color: #0436ff;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 900px) {
-    .login-right {
-        display: none;
-    }
-    
-    .login-left {
-        max-width: 100%;
-    }
-}
-
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-left">
-            <div class="login-content">
-                <div class="login-header">
-                    <h1>Selamat datang!</h1>
-                    <p>Masukkan data sesuai ketentuan</p>
+<body class="m-0 p-0 font-inter bg-gray-50 text-slate-900 antialiased">
+    <div class="flex min-h-screen w-full">
+        <!-- Left Side: Login Form -->
+        <div class="flex-1 basis-1/2 max-w-1/2 flex items-center justify-center p-8">
+            <div class="w-full max-w-md -mt-12">
+                <!-- Header -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold mb-2 text-black">Selamat datang!</h1>
+                    <p class="text-base text-slate-900">Masukkan data sesuai ketentuan</p>
                 </div>
 
-                <div class="login-card">
-                    <div class="card-header">
-                        <i class="ph-fill ph-user-circle"></i>
+                <!-- Login Card -->
+                <div class="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
+                    <!-- Card Header -->
+                    <div class="flex items-center gap-3 px-5 py-4 border-b border-slate-200 font-medium text-sm">
+                        <i class="ph-fill ph-user-circle text-2xl text-black"></i>
                         <span>Login</span>
                     </div>
                     
-                    <form class="card-body" action="dashboard-kategori.html">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Masukkan alamat email Anda" required>
+                    <!-- Form -->
+                    <form class="p-6" action="dashboard.html">
+                        <!-- Email Field -->
+                        <div class="mb-5">
+                            <label class="block text-base font-normal mb-2 text-slate-900">Email</label>
+                            <input 
+                                type="email" 
+                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors" 
+                                placeholder="Masukkan alamat email Anda" 
+                                required
+                            >
                         </div>
                         
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Masukkan password Anda" required>
+                        <!-- Password Field -->
+                        <div class="mb-5">
+                            <label class="block text-base font-normal mb-2 text-slate-900">Password</label>
+                            <input 
+                                type="password" 
+                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors" 
+                                placeholder="Masukkan password Anda" 
+                                required
+                            >
                         </div>
                         
-                        <div class="forgot-password">
-                            <a href="#">Lupa password?</a>
+                        <!-- Forgot Password -->
+                        <div class="text-right -mt-2.5 mb-6">
+                            <a href="#" class="text-blue-600 text-sm no-underline hover:underline">Lupa password?</a>
                         </div>
                         
-                        <button onclick="window.location.href='batch_barang'" type="submit" class="btn-login">Log In</button>
+                        <!-- Login Button -->
+                        <button 
+                            type="submit" 
+                            class="w-full h-11 bg-blue-600 text-white border-none rounded-md text-base font-medium cursor-pointer hover:bg-blue-700 transition-colors mb-6">
+                            <a href="/batch_barang">Log In</a>
+                        </button>
                         
-                        <div class="register-link">
-                            Belum punya akun? <a href="registrasi">Registrasi.</a>
+                        <!-- Register Link -->
+                        <div class="text-center text-sm text-slate-900">
+                            Belum punya akun? 
+                            <a href="/registrasi" class="text-blue-600 no-underline hover:underline">Registrasi.</a>
                         </div>
                     </form>
                 </div>
@@ -234,8 +87,8 @@ body {
         </div>
 
         <!-- Right Side: Image cover -->
-        <div class="login-right">
-            <img src="{{ asset('gambar/login.png') }}" alt="Login Banner" class="banner-image">
+        <div class="flex-1 basis-1/2 max-w-1/2 flex bg-indigo-50">
+            <img src="gambar/login.png" alt="Login Banner" class="w-full h-full object-cover">
         </div>
     </div>
 </body>

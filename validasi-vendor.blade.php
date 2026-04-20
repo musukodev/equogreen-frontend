@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <title>Validasi Vendor - Equogreen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#f1f5fa',
+              /* Main Content Background, light bluish gray */
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Modal */
+    #portofolio-modal {
+      display: none;
+    }
+
+    #portofolio-modal.show {
+      display: flex;
+    }
+
+    #confirm-modal {
+      display: none;
+    }
+
+    #confirm-modal.show {
+      display: flex;
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-animate {
+      animation: modalSlideUp 0.25s ease-out;
+    }
+  </style>
+</head>
+
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
+    <div class="h-28 flex items-center px-6 mt-2">
+      <!-- Logo -->
+      <img src="gambar/logo2.png" alt="Equogreen Logo">
+    </div>
+
+    <div class="px-8 mt-4">
+      <p class="text-sm text-gray-400 font-medium mb-4">Overview</p>
+      <nav class="flex flex-col gap-5">
+        <div>
+          <a href="#" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
+            <i class="fa-solid fa-border-all text-[24px]"></i>
+            <span class="text-[18px]">Dashboard</span>
+          </a>
+          <div class="h-[2px] bg-gray-300 w-[140px]"></div>
+        </div>
+        <div>
+          <a href="/bootstrap/" class="flex items-center gap-3 text-black font-bold mb-2">
+            <i class="fa-solid fa-database text-[24px]"></i>
+            <span class="text-[18px]">Periksa Barang</span>
+          </a>
+          <div class="h-[2px] bg-gray-400 w-[150px]"></div>
+        </div>
+        <div>
+          <a href="/notifikasi" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
+            <div class="relative">
+              <i class="fa-regular fa-bell text-[24px]"></i>
+              <i
+                class="fa-solid fa-circle-plus text-[12px] bg-white rounded-full absolute -bottom-1 -right-1 text-black"></i>
+            </div>
+            <span class="text-[18px]">Kelola Notifikasi</span>
+          </a>
+          <div class="h-[2px] bg-gray-300 w-[180px]"></div>
+        </div>
+        <div class="w-full">
+          <a href="/validasi-vendor" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
+            <i class="ph-bold ph-check-circle text-[26px] -ml-0.5"></i>
+            <span class="text-[17px] tracking-tight">Validasi Vendor</span>
+          </a>
+          <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="px-8 mt-auto mb-10">
+      <p class="text-sm text-gray-400 font-medium mb-4">Pengaturan</p>
+      <nav class="flex flex-col gap-5">
+        <a href="#" class="flex items-center gap-3 text-gray-600 font-bold">
+          <i class="fa-solid fa-gear text-[20px]"></i>
+          <span class="text-[17px]">Pengaturan</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 text-red-500 font-bold">
+          <i class="fa-solid fa-arrow-right-from-bracket text-[20px]"></i>
+          <span class="text-[17px]">Logout</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="flex-1 flex flex-col min-w-0 p-6 lg:p-8 gap-6 overflow-y-auto">
+
+    <!-- Top Header -->
+    <header class="flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="dashboard.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </a>
+        <div>
+          <h1 class="text-3xl lg:text-4xl font-black text-gray-800 tracking-tight" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Validasi Pendaftaran Vendor</h1>
+          <p class="text-gray-500 text-base mt-1">Periksa dan setujui akses vendor baru</p>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="flex items-center gap-3">
+        <button class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
+          <img src="gambar/bell-black.png" alt="Notifikasi" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+        </button>
+        <img src="gambar/Profileup.png" alt="Profil" class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+        <div class="hidden md:block w-px h-10 bg-gray-200"></div>
+        <span class="hidden md:block font-medium text-gray-700 text-[17px]">Procurement</span>
+      </div>
+    </header>
+
+    <!-- Vendor Table -->
+    <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+      <table class="w-full border-collapse" id="vendor-table">
+        <thead>
+          <tr class="bg-[#002eff] text-white">
+            <th class="px-5 py-3.5 text-left text-sm font-semibold border-r border-white/20 w-[22%]">Nama Vendor</th>
+            <th class="px-5 py-3.5 text-left text-sm font-semibold border-r border-white/20 w-[18%]">Kategori</th>
+            <th class="px-5 py-3.5 text-center text-sm font-semibold border-r border-white/20 w-[20%]">Tanggal Daftar</th>
+            <th class="px-5 py-3.5 text-center text-sm font-semibold border-r border-white/20 w-[18%]">Portofolio</th>
+            <th class="px-5 py-3.5 text-center text-sm font-semibold w-[22%]">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Diisi oleh JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ========== MODAL: Portofolio ========== -->
+  <div id="portofolio-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
+    <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-7 flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-extrabold text-gray-900" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Portofolio Vendor</h2>
+        <button id="close-portofolio-modal"
+          class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center hover:bg-red-600 active:scale-90 transition-all duration-200 text-lg font-bold">
+          ✕
+        </button>
+      </div>
+      <hr class="border-gray-100" />
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl" id="modal-avatar">A</div>
+        <div>
+          <p class="font-bold text-gray-800 text-lg" id="modal-nama">—</p>
+          <span class="inline-block px-3 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mt-1" id="modal-kategori">—</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-xs text-gray-400 mb-0.5">Email</p>
+          <p class="text-sm font-semibold text-gray-700" id="modal-email">—</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-xs text-gray-400 mb-0.5">Telepon</p>
+          <p class="text-sm font-semibold text-gray-700" id="modal-phone">—</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-xs text-gray-400 mb-0.5">Tanggal Daftar</p>
+          <p class="text-sm font-semibold text-gray-700" id="modal-tanggal">—</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-xs text-gray-400 mb-0.5">NPWP</p>
+          <p class="text-sm font-semibold text-gray-700" id="modal-npwp">—</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3 col-span-2">
+          <p class="text-xs text-gray-400 mb-0.5">Alamat</p>
+          <p class="text-sm font-semibold text-gray-700" id="modal-alamat">—</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3 col-span-2">
+          <p class="text-xs text-gray-400 mb-0.5">Deskripsi</p>
+          <p class="text-sm text-gray-600" id="modal-desc">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: Konfirmasi Aksi ========== -->
+  <div id="confirm-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
+    <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 p-7 flex flex-col gap-4 text-center">
+      <div class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl" id="confirm-icon-wrap">
+        <span id="confirm-icon">✓</span>
+      </div>
+      <h2 class="text-lg font-extrabold text-gray-900" id="confirm-title">Setujui Vendor?</h2>
+      <p class="text-sm text-gray-500" id="confirm-desc">Vendor <strong id="confirm-vendor-name">—</strong> akan disetujui aksesnya.</p>
+      <div class="flex gap-3 mt-1">
+        <button id="confirm-cancel"
+          class="flex-1 py-2.5 rounded-xl border-2 border-gray-300 text-gray-700 font-bold text-sm hover:bg-gray-50 transition-all duration-200">
+          Batal
+        </button>
+        <button id="confirm-ok"
+          class="flex-1 py-2.5 rounded-xl text-white font-bold text-sm transition-all duration-200">
+          Konfirmasi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-[60] bg-primary text-white px-5 py-3 rounded-xl shadow-lg text-sm font-bold opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">Berhasil!</span>
+  </div>
+
+  <script>
+    // ============================================================
+    // DATA DUMMY VENDOR PENDAFTAR
+    // ============================================================
+    const VENDORS = [{
+        nama: 'ATK Corp.',
+        kategori: 'ATK',
+        tanggal: '12-01-2026',
+        email: 'order@atkcorp.com',
+        phone: '021-5559876',
+        npwp: '01.234.567.8-012.000',
+        alamat: 'Jl. Stationery Blok A No.5, Tangerang',
+        desc: 'Supplier alat tulis kantor terlengkap sejak 2015.'
+      },
+      {
+        nama: 'Chemicals.co',
+        kategori: 'Kimia',
+        tanggal: '15-01-2026',
+        email: 'info@chemicals.co.id',
+        phone: '021-5551111',
+        npwp: '02.345.678.9-013.000',
+        alamat: 'Jl. Industri Kimia No.7, Cikarang',
+        desc: 'Penyedia bahan kimia industri bersertifikat ISO.'
+      },
+      {
+        nama: 'PT Jayapura',
+        kategori: 'Pantry',
+        tanggal: '17-01-2026',
+        email: 'sales@jayapura.co.id',
+        phone: '021-5552222',
+        npwp: '03.456.789.0-014.000',
+        alamat: 'Jl. Pantry Supply No.3, Jakarta Timur',
+        desc: 'Kebutuhan pantry kantor dari kopi hingga peralatan.'
+      },
+      {
+        nama: 'Elektro Site',
+        kategori: 'Elektronik',
+        tanggal: '20-02-2026',
+        email: 'info@elektrosite.co.id',
+        phone: '021-5551234',
+        npwp: '04.567.890.1-015.000',
+        alamat: 'Jl. Raya Elektronik No.12, Jakarta Barat',
+        desc: 'Distributor peralatan elektronik kantor sejak 2018.'
+      },
+      {
+        nama: 'Siaga 1',
+        kategori: 'Kesehatan',
+        tanggal: '22-03-2026',
+        email: 'order@siaga1.com',
+        phone: '021-5553333',
+        npwp: '05.678.901.2-016.000',
+        alamat: 'Jl. Medika No.9, Bandung',
+        desc: 'Supplier P3K dan alat kesehatan kantor.'
+      },
+      {
+        nama: 'Fur&Ture',
+        kategori: 'Furniture',
+        tanggal: '30-03-2026',
+        email: 'sales@furniture.co.id',
+        phone: '021-5558888',
+        npwp: '06.789.012.3-017.000',
+        alamat: 'Jl. Mebel Indah No.8, Bekasi',
+        desc: 'Furnitur kantor modern dengan garansi 3 tahun.'
+      },
+      {
+        nama: 'PT Bisa',
+        kategori: 'Konstruksi',
+        tanggal: '12-04-2026',
+        email: 'info@ptbisa.co.id',
+        phone: '021-5554444',
+        npwp: '07.890.123.4-018.000',
+        alamat: 'Jl. Konstruksi No.15, Depok',
+        desc: 'Jasa renovasi dan perbaikan gedung kantor.'
+      },
+      {
+        nama: 'Wijaya Group',
+        kategori: 'Investasi',
+        tanggal: '28-05-2026',
+        email: 'contact@wijayagroup.co.id',
+        phone: '021-5555555',
+        npwp: '08.901.234.5-019.000',
+        alamat: 'Jl. Bisnis Tower Lt.12, Jakarta Pusat',
+        desc: 'Konsultan investasi dan pengadaan aset perusahaan.'
+      },
+    ];
+
+    // ---- Elements ----
+    const tableBody = document.getElementById('table-body');
+
+    // Portofolio modal
+    const portofolioModal = document.getElementById('portofolio-modal');
+    const closePortofolioModal = document.getElementById('close-portofolio-modal');
+
+    // Confirm modal
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmCancel = document.getElementById('confirm-cancel');
+    const confirmOk = document.getElementById('confirm-ok');
+
+    let pendingAction = null; // { type: 'approve'|'reject', index: number }
+
+    // =============================================
+    // RENDER TABLE
+    // =============================================
+    function renderTable() {
+      tableBody.innerHTML = '';
+
+      if (VENDORS.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="5" class="px-5 py-10 text-center text-gray-300 text-sm italic">Tidak ada vendor yang menunggu validasi</td>
+          </tr>
+        `;
+        return;
+      }
+
+      VENDORS.forEach((v, idx) => {
+        const row = document.createElement('tr');
+        row.className = 'border-b border-gray-100 hover:bg-[#f8f9ff] transition-colors duration-150';
+        row.innerHTML = `
+          <td class="px-5 py-4 text-sm font-medium text-gray-800 border-r border-gray-100">${v.nama}</td>
+          <td class="px-5 py-4 text-sm text-gray-600 border-r border-gray-100">${v.kategori}</td>
+          <td class="px-5 py-4 text-sm text-gray-600 text-center border-r border-gray-100">${v.tanggal}</td>
+          <td class="px-5 py-4 text-center border-r border-gray-100">
+            <button class="btn-lihat text-accent font-semibold text-sm underline underline-offset-2 hover:text-primary transition-colors" data-index="${idx}">
+              Lihat
+            </button>
+          </td>
+          <td class="px-5 py-4">
+            <div class="flex items-center justify-center gap-3">
+              <button class="btn-approve w-9 h-9 rounded-lg bg-green-50 hover:bg-green-100 text-green-500 hover:text-green-600 flex items-center justify-center transition-all duration-200" data-index="${idx}" title="Setujui ${v.nama}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </button>
+              <button class="btn-reject w-9 h-9 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 hover:text-red-600 flex items-center justify-center transition-all duration-200 text-lg font-bold" data-index="${idx}" title="Tolak ${v.nama}">
+                ✕
+              </button>
+            </div>
+          </td>
+        `;
+
+        // Animate row
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(-4px)';
+        tableBody.appendChild(row);
+        setTimeout(() => {
+          row.style.transition = 'opacity 0.2s, transform 0.2s';
+          row.style.opacity = '1';
+          row.style.transform = 'translateY(0)';
+        }, idx * 40);
+      });
+
+      // Event listeners
+      document.querySelectorAll('.btn-lihat').forEach(btn => {
+        btn.addEventListener('click', () => openPortofolio(parseInt(btn.dataset.index)));
+      });
+      document.querySelectorAll('.btn-approve').forEach(btn => {
+        btn.addEventListener('click', () => openConfirm('approve', parseInt(btn.dataset.index)));
+      });
+      document.querySelectorAll('.btn-reject').forEach(btn => {
+        btn.addEventListener('click', () => openConfirm('reject', parseInt(btn.dataset.index)));
+      });
+    }
+
+    renderTable();
+
+    // =============================================
+    // PORTOFOLIO MODAL
+    // =============================================
+    function openPortofolio(index) {
+      const v = VENDORS[index];
+      document.getElementById('modal-avatar').textContent = v.nama.charAt(0);
+      document.getElementById('modal-nama').textContent = v.nama;
+      document.getElementById('modal-kategori').textContent = v.kategori;
+      document.getElementById('modal-email').textContent = v.email;
+      document.getElementById('modal-phone').textContent = v.phone;
+      document.getElementById('modal-tanggal').textContent = v.tanggal;
+      document.getElementById('modal-npwp').textContent = v.npwp;
+      document.getElementById('modal-alamat').textContent = v.alamat;
+      document.getElementById('modal-desc').textContent = v.desc;
+      portofolioModal.classList.add('show');
+    }
+
+    closePortofolioModal.addEventListener('click', () => portofolioModal.classList.remove('show'));
+    portofolioModal.addEventListener('click', (e) => {
+      if (e.target === portofolioModal) portofolioModal.classList.remove('show');
+    });
+
+    // =============================================
+    // CONFIRM MODAL (Setuju / Tolak)
+    // =============================================
+    function openConfirm(type, index) {
+      const v = VENDORS[index];
+      pendingAction = {
+        type,
+        index
+      };
+
+      const iconWrap = document.getElementById('confirm-icon-wrap');
+      const icon = document.getElementById('confirm-icon');
+      const title = document.getElementById('confirm-title');
+      const desc = document.getElementById('confirm-desc');
+      const okBtn = document.getElementById('confirm-ok');
+      const vendorName = document.getElementById('confirm-vendor-name');
+
+      vendorName.textContent = v.nama;
+
+      if (type === 'approve') {
+        iconWrap.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-green-50 text-green-500';
+        icon.textContent = '✓';
+        title.textContent = 'Setujui Vendor?';
+        desc.innerHTML = `Vendor <strong>${v.nama}</strong> akan disetujui dan mendapatkan akses.`;
+        okBtn.className = 'flex-1 py-2.5 rounded-xl text-white font-bold text-sm transition-all duration-200 bg-green-500 hover:bg-green-600';
+      } else {
+        iconWrap.className = 'w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl bg-red-50 text-red-500';
+        icon.textContent = '✕';
+        title.textContent = 'Tolak Vendor?';
+        desc.innerHTML = `Vendor <strong>${v.nama}</strong> akan ditolak pendaftarannya.`;
+        okBtn.className = 'flex-1 py-2.5 rounded-xl text-white font-bold text-sm transition-all duration-200 bg-red-500 hover:bg-red-600';
+      }
+
+      confirmModal.classList.add('show');
+    }
+
+    confirmCancel.addEventListener('click', () => {
+      confirmModal.classList.remove('show');
+      pendingAction = null;
+    });
+    confirmModal.addEventListener('click', (e) => {
+      if (e.target === confirmModal) {
+        confirmModal.classList.remove('show');
+        pendingAction = null;
+      }
+    });
+
+    confirmOk.addEventListener('click', () => {
+      if (!pendingAction) return;
+      const {
+        type,
+        index
+      } = pendingAction;
+      const vendorNama = VENDORS[index].nama;
+
+      // Hapus vendor dari array
+      VENDORS.splice(index, 1);
+      confirmModal.classList.remove('show');
+      pendingAction = null;
+
+      // Re-render table
+      renderTable();
+
+      if (type === 'approve') {
+        showToast(`${vendorNama} berhasil disetujui!`);
+      } else {
+        showToast(`${vendorNama} berhasil ditolak.`);
+      }
+    });
+
+    // ---- Toast Helper ----
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastIcon = document.getElementById('toast-icon');
+      toastMsg.textContent = msg;
+      toast.style.background = isError ? '#e53e3e' : '#4039c9';
+      toastIcon.textContent = isError ? '!' : '✓';
+      toast.style.opacity = '1';
+      toast.style.pointerEvents = 'auto';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.pointerEvents = 'none';
+      }, 2800);
+    }
+  </script>
+
+</body>
+
+</html>

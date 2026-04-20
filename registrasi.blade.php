@@ -1,355 +1,208 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Registration - Equogreen</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="registrasi.css">
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #ffffff;
-    color: #111111;
-}
-
-/* Header */
-.header {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 24px 40px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    min-height: 110px;
-}
-
-.back-btn {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-}
-
-.back-btn:hover {
-    opacity: 0.8;
-}
-
-.back-btn img {
-    height: 24px;
-    width: auto;
-}
-
-.header-content {
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.logo {
-    height: 32px;
-    width: auto;
-}
-
-.company-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: #e0e0e0;
-}
-
-.company-info .divider {
-    color: #666666;
-}
-
-/* Form Container */
-.main-container {
-    max-width: 840px;
-    margin: 48px auto;
-    padding: 0 24px;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 48px;
-}
-
-.page-header h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #000000;
-}
-
-.page-header p {
-    font-size: 15px;
-    color: #333333;
-}
-
-/* Form Layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 24px;
-}
-
-.form-group {
-    margin-bottom: 22px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #111;
-}
-
-.form-control {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #767676;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-    background-color: #fff;
-}
-
-.form-control::placeholder {
-    color: #666;
-}
-
-.form-control:focus {
-    border-color: #0d47a1;
-}
-
-textarea.form-control {
-    resize: none;
-}
-
-.deskripsi-textarea {
-    height: 220px;
-}
-
-/* Align Kategori Vendor to the bottom inputs */
-.no-label {
-    margin-top: -4px;
-}
-
-.full-width {
-    width: 100%;
-    margin-bottom: 32px;
-}
-
-/* Drag & Drop */
-.file-drop-area {
-    border: 1px dashed #767676;
-    border-radius: 4px;
-    padding: 36px 20px;
-    text-align: center;
-    background-color: #fbfbfb;
-    cursor: pointer;
-    margin-bottom: 8px;
-    transition: background-color 0.2s;
-}
-
-.file-drop-area:hover {
-    background-color: #f5f5f5;
-}
-
-.file-drop-content p {
-    font-size: 14px;
-    color: #111;
-}
-
-.file-help-text {
-    font-size: 13px;
-    color: #333;
-    display: block;
-}
-
-/* Actions */
-.submit-btn {
-    width: 100%;
-    background-color: #0044fa; 
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: 14px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-bottom: 24px;
-}
-
-.submit-btn:hover {
-    background-color: #0036d1;
-}
-
-.login-link {
-    text-align: right;
-    font-size: 14px;
-    color: #111;
-}
-
-.login-link a {
-    color: #0044fa;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Table / Phone Layout */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 24px 20px;
-        align-items: center;
-    }
-    
-    .back-btn {
-        position: static;
-        transform: none;
-        margin-bottom: 20px;
-        align-self: flex-start;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-        gap: 0px;
-    }
-    
-    .deskripsi-textarea {
-        height: 120px;
-    }
-
-    .company-info .divider {
-        display: none;
-    }
-    
-    .company-info {
-        flex-direction: column;
-        gap: 6px;
-    }
-}
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-white font-sans">
+  <div class="w-full max-w-[593px] mx-auto border border-gray-300 min-h-screen">
+
     <!-- Header -->
-    <header class="header">
-        <a href="#" class="back-btn" onclick="history.back(); return false;">
-            <img src="gambar/Back Arrow.png" alt="Kembali">
-        </a>
-        <div class="header-content">
-            <img src="gambar/logo putih.png" alt="Equogreen Logo" class="logo">
-            <span class="logo-text">Equogreen</span>
-            <div class="company-info">
-                <span>Company Email</span>
-                <span class="divider">|</span>
-                <span>Company number</span>
-                <span class="divider">|</span>
-                <span>Company website</span>
-            </div>
+    <header class="bg-black text-white h-[84px] relative">
+      <div class="absolute left-6 top-7">
+        <button class="w-8 h-8 rounded-full border border-white flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex flex-col items-center justify-center h-full">
+        <div class="flex items-center gap-2">
+          <img src="gambar/logo putih.png" alt="Logo" class="w-12 h-12">
+          <h1 class="text-[16px] font-bold leading-none">Equogreen</h1>
         </div>
+
+        <nav class="flex gap-4 mt-3 text-[12px] text-white/90">
+          <a href="#" class="hover:underline">Company Email</a>
+          <span class="text-white/40 select-none" aria-hidden="true">|</span>
+          <a href="#" class="hover:underline">Company number</a>
+          <span class="text-white/40 select-none" aria-hidden="true">|</span>
+          <a href="#" class="hover:underline">Company website</a>
+        </nav>
+      </div>
     </header>
 
-    <!-- Main Form -->
-    <main class="main-container">
-        <div class="page-header">
-            <h1>Online Registration</h1>
-            <p>Please fill out this registration form.</p>
+    <!-- Content -->
+    <main class="px-[60px] pt-6 pb-10">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="text-[18px] font-semibold text-black">Online Registration</h2>
+        <p class="text-[12px] text-gray-700 mt-1">Please fill out this registration form.</p>
+      </div>
+
+      <!-- Form -->
+      <form class="mt-10">
+        <div class="grid grid-cols-2 gap-x-10">
+          
+          <!-- Left -->
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[12px] text-black mb-1">Nama Perusahaan</label>
+              <input type="text" class="w-full h-[24px] border border-gray-400 rounded-[4px] px-2 text-[12px] focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-[12px] text-black mb-1">Email Perusahaan</label>
+              <input type="email" class="w-full h-[24px] border border-gray-400 rounded-[4px] px-2 text-[12px] focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-[12px] text-black mb-1">No. Handphone Perusahaan</label>
+              <input type="text" class="w-full h-[24px] border border-gray-400 rounded-[4px] px-2 text-[12px] focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-[12px] text-black mb-1">Alamat Perusahaan</label>
+              <textarea class="w-full h-[100px] border border-gray-400 rounded-[4px] px-2 py-2 text-[12px] resize-none focus:outline-none"></textarea>
+            </div>
+
+            <div>
+              <select class="w-full h-[28px] border border-gray-400 rounded-[4px] px-2 text-[12px] text-gray-600 bg-white focus:outline-none appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22gray%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>')] bg-no-repeat bg-[right_8px_center]">
+                <option value="" disabled selected>Pilih Kategori Vendor</option>
+                <option value="supplier">Supplier</option>
+                <option value="kontraktor">Kontraktor</option>
+                <option value="distributor">Distributor</option>
+                <option value="jasa">Jasa</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[12px] text-black mb-1">Nama Penanggung jawab</label>
+              <input type="text" class="w-full h-[24px] border border-gray-400 rounded-[4px] px-2 text-[12px] focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-[12px] text-black mb-1">Deskripsi Perusahaan</label>
+              <textarea class="w-full h-[125px] border border-gray-400 rounded-[4px] px-2 py-2 text-[12px] resize-none focus:outline-none"></textarea>
+            </div>
+
+            <!-- PROVINSI -->
+            <div>
+            <select id="provinsi"
+                class="w-full h-[28px] border border-gray-400 rounded-[4px] px-2 text-[12px] text-gray-600 bg-white focus:outline-none appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22gray%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>')] bg-no-repeat bg-[right_8px_center]">
+                <option value="">Provinsi</option>
+            </select>
+            </div>
+
+            <!-- KOTA -->
+            <div>
+            <select id="kota"
+                class="w-full h-[28px] border border-gray-400 rounded-[4px] px-2 text-[12px] text-gray-600 bg-white focus:outline-none appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22gray%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>')] bg-no-repeat bg-[right_8px_center]">
+                <option value="">Kota</option>
+            </select>
+            </div>
+
+            <!-- KECAMATAN -->
+            <div>
+            <select id="kecamatan"
+                class="w-full h-[28px] border border-gray-400 rounded-[4px] px-2 text-[12px] text-gray-600 bg-white focus:outline-none appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22gray%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>')] bg-no-repeat bg-[right_8px_center]">
+                <option value="">Kecamatan</option>
+            </select>
+            </div>
+
+            <!-- KODE POS -->
+            <div>
+            <input id="kodepos" type="text" placeholder="Kode Pos"
+                class="w-full h-[28px] border border-gray-400 rounded-[4px] px-2 text-[12px] text-gray-600 bg-white focus:outline-none">
+            </div>
+          </div>
         </div>
 
-        <form class="registration-form">
-            <div class="form-grid">
-                <!-- Left Column -->
-                <div class="form-column">
-                    <div class="form-group">
-                        <label>Nama Perusahaan</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Perusahaan</label>
-                        <input type="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>No. Handphone Perusahaan</label>
-                        <input type="tel" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat Perusahaan</label>
-                        <textarea class="form-control" rows="6"></textarea>
-                    </div>
-                    <div class="form-group no-label">
-                        <input type="text" class="form-control" placeholder="Kategori Vendor">
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="form-column">
-                    <div class="form-group">
-                        <label>Nama Penanggung jawab</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Deskripsi Perusahaan</label>
-                        <textarea class="form-control deskripsi-textarea"></textarea>
-                    </div>
-                    <div class="form-group no-label">
-                        <input type="text" class="form-control" placeholder="Provinsi">
-                    </div>
-                    <div class="form-group no-label">
-                        <input type="text" class="form-control" placeholder="Kota">
-                    </div>
-                    <div class="form-group no-label">
-                        <input type="text" class="form-control" placeholder="Kode Pos">
-                    </div>
-                </div>
+        <!-- Upload -->
+        <div class="mt-2">
+          <label class="block text-[12px] text-black mb-1">Portofolio Perusahaan</label>
+          <div class="border border-gray-400 rounded-[4px] p-1">
+            <div class="border border-dashed border-gray-400 rounded-[4px] h-[68px] flex flex-col items-center justify-center text-[12px] text-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mb-1 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6" />
+              </svg>
+              <p>You can drag and drop files here to add them.</p>
             </div>
+          </div>
+          <p class="text-[12px] text-black mt-1">Accepted files type : .pdf, .docx</p>
+        </div>
 
-            <!-- Full Width Content -->
-            <div class="form-group full-width">
-                <label>Portofolio Perusahaan</label>
-                <div class="file-drop-area" style="position: relative; overflow: hidden;">
-                    <input type="file" name="portofolio" accept=".pdf,.docx" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
-                    <div class="file-drop-content">
-                        <p>You can drag and drop files here to add them.</p>
-                    </div>
-                </div>
-                <span class="file-help-text">Accepted files type : .pdf, .docx</span>
-            </div>
+        <!-- Button -->
+        <div class="mt-3">
+          <button type="submit" class="w-full h-[32px] bg-blue-700 text-white text-[12px] rounded-[4px] hover:bg-blue-800 transition">
+            Registrasi
+          </button>
+        </div>
 
-            <button type="button" class="submit-btn">Registrasi</button>
-
-            <div class="login-link">
-                Sudah punya akun? <a href="login">Login.</a>
-            </div>
-        </form>
+        <!-- Login -->
+        <div class="text-right mt-2 text-[12px]">
+          <span class="text-black">Sudah punya akun?</span>
+          <a href="login.html" class="text-blue-600 hover:underline"> Login.</a>
+        </div>
+      </form>
     </main>
+  </div>
+
+    <script>
+    const provinsi = document.getElementById("provinsi");
+    const kota = document.getElementById("kota");
+    const kecamatan = document.getElementById("kecamatan");
+
+    // load provinsi
+    fetch("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json")
+    .then(res => res.json())
+    .then(data => {
+    provinsi.innerHTML = '<option value="">Provinsi</option>';
+    data.forEach(p => {
+        provinsi.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+    });
+    });
+
+    // provinsi → kota
+    provinsi.addEventListener("change", function () {
+    if (!this.value) return;
+
+    kota.innerHTML = '<option>Loading...</option>';
+    kecamatan.innerHTML = '<option>Kecamatan</option>';
+
+    fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${this.value}.json`)
+    .then(res => res.json())
+    .then(data => {
+        kota.innerHTML = '<option value="">Kota</option>';
+        data.forEach(k => {
+        kota.innerHTML += `<option value="${k.id}">${k.name}</option>`;
+        });
+    });
+    });
+
+    // kota → kecamatan
+    kota.addEventListener("change", function () {
+    if (!this.value) return;
+
+    kecamatan.innerHTML = '<option>Loading...</option>';
+
+    fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${this.value}.json`)
+    .then(res => res.json())
+    .then(data => {
+        kecamatan.innerHTML = '<option value="">Kecamatan</option>';
+        data.forEach(d => {
+        kecamatan.innerHTML += `<option value="${d.id}">${d.name}</option>`;
+        });
+    });
+    });
+    </script>
+
 </body>
 </html>
