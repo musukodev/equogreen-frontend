@@ -12,9 +12,10 @@
             theme: {
                 extend: {
                     colors: {
+                        primary: '#4039c9',
+                        accent:  '#002eff',
                         brand: {
                             bg: '#f1f5fa',
-                            /* Main Content Background, light bluish gray */
                         }
                     },
                     fontFamily: {
@@ -24,77 +25,71 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
-<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg font-sans">
 
     <!-- Sidebar -->
+    <!-- ===== SIDEBAR ===== -->
     <!-- Sidebar Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
-    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 flex w-[260px] bg-white flex-col flex-shrink-0 h-full shadow-lg">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-[280px] min-h-screen bg-white flex-shrink-0 flex flex-col shadow-md">
         <!-- Logo -->
-        <div class="h-28 flex items-center px-6 mt-2">
-            <img src="gambar/logo2.png" alt="Equogreen Logo">
+        <div class="flex items-center gap-3 px-6 pt-8 pb-6 border-b border-gray-100">
+            <img src="gambar/logo.png" alt="Logo Equogreen" class="w-14 h-14 rounded-full object-cover"/>
+            <span class="text-2xl font-bold text-gray-800">Equogreen</span>
         </div>
 
-        <div class="px-8 mt-4 w-full">
-            <p class="text-[14px] text-[#9ca3af] font-medium mb-4">Overview</p>
-            <nav class="flex flex-col gap-[22px] w-full">
-                <div class="w-full">
-                    <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold text-[#4b5563] ph-squares-four text-[26px]"></i>
-                        <span class="text-[17px] tracking-tight">Dashboard</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[135px]"></div>
-                </div>
-                <div class="w-full">
-                    <a href="/batch_barang" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold text-[#1f2937] ph-database text-[26px] -ml-0.5"></i>
-                        <span class="text-[17px] tracking-tight">Periksa Barang</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
-                </div>
-                <div class="w-full">
-                    <a href="/notifikasi" class="flex items-center gap-3 text-[#4b5563] font-bold mb-[10px] hover:text-black transition">
-                        <div class="relative">
-                            <i class="ph-bold ph-bell text-[26px]"></i>
-                            <i class="ph-fill ph-plus-circle text-[12px] bg-white rounded-full absolute -bottom-0.5 -right-0 text-black border border-white"></i>
-                        </div>
-                        <span class="text-[17px] tracking-tight">Kelola Notifikasi</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[150px]"></div>
-                </div>
-                <div class="w-full">
-                    <a href="/validasi-vendor" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold ph-check-circle text-[26px] -ml-0.5"></i>
-                        <span class="text-[17px] tracking-tight">Validasi Vendor</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
-                </div>
-            </nav>
-        </div>
+        <!-- Nav Menu -->
+        <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
-        <div class="px-8 mt-auto mb-[40px] w-full">
-            <p class="text-[14px] text-[#9ca3af] font-medium mb-5">Pengaturan</p>
-            <nav class="flex flex-col gap-[22px] w-full">
-                <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold hover:text-black transition">
-                    <i class="ph-bold ph-gear text-[26px]"></i>
-                    <span class="text-[17px] tracking-tight">Pengaturan</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 text-[#ef4444] font-bold hover:text-red-700 transition">
-                    <i class="ph-bold ph-sign-out text-[26px]"></i>
-                    <span class="text-[17px] tracking-tight">Logout</span>
-                </a>
-            </nav>
+            <!-- Dashboard -->
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/dashboard layout.png" alt="Dashboard" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
+                Dashboard
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Periksa Barang (ACTIVE) -->
+            <a href="batch_barang.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/search database.png" alt="Periksa Barang" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
+                Periksa Barang
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Kelola Notifikasi -->
+            <a href="notifikasi.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
+                Kelola Notifikasi
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Validasi Vendor -->
+            <a href="validasi-vendor.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/validasi.png" alt="Validasi Vendor" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
+                Validasi Vendor
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Pengaturan -->
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/Settings.png" alt="Pengaturan" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
+                Pengaturan
+            </a>
+
+        </nav>
+
+        <!-- Logout -->
+        <div class="px-4 pb-8 border-t border-gray-100 pt-4">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+                <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain"/>
+                Logout
+            </a>
         </div>
     </aside>
 
@@ -102,43 +97,71 @@
     <div class="flex-1 flex flex-col h-screen overflow-y-auto w-full">
 
         <!-- Main Workspace Padding Wrapper -->
-        <main class="flex-1 p-4 md:p-10 relative w-full">
+        <main class="flex-1 flex flex-col min-w-0 p-6 lg:p-8 gap-6 overflow-y-auto relative">
 
-            <!-- Header -->
-            <header class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-6 w-full gap-5">
-                <!-- Left: Title & Back & Tabs -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center w-full lg:w-auto gap-4 sm:gap-6">
-                    <div class="flex items-center gap-3">
-                        <button onclick="toggleSidebar()" class="lg:hidden w-11 h-11 rounded-lg border border-gray-300 bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition flex-shrink-0">
-                            <i class="ph-bold ph-list text-xl text-black"></i>
-                        </button>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-gray-200 transition">
-                            <i class="ph-bold ph-arrow-left text-xl text-black"></i>
-                        </a>
-                        <h1 class="text-[36px] font-bold text-black ml-2">2026</h1>
+            <!-- Top Header -->
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center justify-between md:justify-start w-full md:w-auto gap-4">
+                    <div class="flex items-center gap-3 md:gap-6">
+                        <div class="flex items-center gap-2 md:gap-4">
+                            <!-- Mobile Hamburger -->
+                            <button onclick="toggleSidebar()"
+                                class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary transition-all duration-200 shadow-sm flex-shrink-0 group">
+                                <img src="gambar/garis3.png" alt="Menu" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+                            </button>
+                            <!-- Back Button -->
+                            <a href="menu-periksa-barang.html"
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white transition-all duration-200 shadow-sm">
+                                <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
+                            </a>
+                            <h1 class="text-2xl md:text-[36px] font-bold text-[#111827] leading-none">2026</h1>
+                        </div>
+
+                        <!-- Tabs Section (Desktop) -->
+                        <div class="hidden md:flex items-center gap-8 ml-2">
+                            <a href="/batch_barang"
+                                class="text-[17px] font-bold text-black border-b-[3px] border-primary pb-1 whitespace-nowrap">
+                                Buat Batch
+                            </a>
+                            <a href="/periksa_barang"
+                                class="text-[17px] font-medium text-gray-400 hover:text-primary transition-colors pb-1 whitespace-nowrap">
+                                Periksa Barang
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="flex items-center gap-6 mt-1 sm:mt-0">
-                        <a href="/batch_barang" class="relative text-black font-medium text-[16px] xl:text-[18px] pb-1 transition-colors duration-300 hover:text-[#8196ff] border-b-2 border-[#768bd4]">
-                            Buat Batch
-                        </a>
-                        <a href="/periksa_barang" class="relative text-black font-medium text-[16px] xl:text-[18px] pb-1 transition-colors duration-300 hover:text-[#8196ff] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#8196ff] after:transition-all after:duration-300 hover:after:w-full">
-                            Periksa Barang
-                        </a>
+                    <!-- Right: Profile Section (Mobile Only) -->
+                    <div class="flex md:hidden items-center gap-3">
+                        <button class="w-10 h-10 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200">
+                            <img src="gambar/bell-black.png" alt="Notifikasi" class="w-5 h-5 object-contain" />
+                        </button>
+                        <img src="gambar/Profileup.png" alt="Profil" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
                     </div>
                 </div>
 
-                <!-- Right: User Actions -->
-                <div class="flex items-center gap-4 align-middle mt-2 xl:mt-0">
-                    <button class="w-10 h-10 rounded-full border border-black bg-transparent flex items-center justify-center hover:bg-gray-100 transition">
-                        <i class="ph-fill ph-bell text-xl text-black"></i>
+                <!-- Tabs Section (Mobile Only) -->
+                <div class="flex md:hidden items-center gap-6 px-1">
+                    <a href="/batch_barang"
+                        class="text-[15px] font-bold text-black border-b-2 border-primary pb-1 whitespace-nowrap">
+                        Buat Batch
+                    </a>
+                    <a href="/periksa_barang"
+                        class="text-[15px] font-medium text-gray-400 hover:text-primary transition-colors pb-1 whitespace-nowrap">
+                        Periksa Barang
+                    </a>
+                </div>
+
+                <!-- Right: Profile Section (Desktop Only) -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button
+                        class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group shadow-sm">
+                        <img src="gambar/bell-black.png" alt="Notifikasi"
+                            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
                     </button>
-                    <button class="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md">
-                        <i class="ph-fill ph-user text-xl text-white"></i>
-                    </button>
-                    <div class="h-6 w-[1px] bg-gray-400 mx-1"></div>
-                    <span class="text-[15px] text-black font-medium">ATK Corner</span>
+                    <img src="gambar/Profileup.png" alt="Profil"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+                    <div class="w-px h-10 bg-gray-200"></div>
+                    <span class="font-medium text-gray-700 text-[17px]">Procurement</span>
                 </div>
             </header>
 
@@ -153,7 +176,7 @@
                             class="w-full sm:w-[60%] lg:w-[40%] xl:w-[70%] border border-gray-400 rounded-md px-4 py-2 text-[15px] outline-none focus:border-black transition">
 
                         <button onclick="openModal()"
-                            class="w-full sm:w-auto bg-[#1e40ff] text-white font-bold rounded-md px-6 py-2 flex items-center justify-center gap-2 hover:bg-blue-700 transition">
+                            class="w-full sm:w-auto bg-[#1e40ff] text-white font-bold rounded-md px-6 py-2 flex items-center justify-center gap-2 hover:bg-blue-5   00 transition">
                             <i class="fa-solid fa-plus text-sm"></i> Tambah Batch
                         </button>
                     </div>
@@ -169,46 +192,48 @@
                             <thead class="bg-blue-600 ">
                                 <tr>
                                     <th class="px-4 py-3 text-left text-sm font-bold border-b text-white">No</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold border-b text-white">Waktu Mulai</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold border-b text-white">Waktu Selesai</th>
-                                    <th class="px-4 py-3 text-center text-sm font-bold border-b text-white">Aksi</th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold border-b text-white">Waktu Mulai
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold border-b text-white">Waktu Selesai
+                                    </th>
+                                    <th class="px-6 py-3 text-center text-sm font-bold border-b text-white">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody id="batchTable">
                                 <tr class="border-b hover:bg-gray-50">
-                                    <td class="px-4 py-3">1</td>
-                                    <td class="px-4 py-3">12 April 2026, 09:00</td>
-                                    <td class="px-4 py-3">12 April 2026, 17:00</td>
-                                    <td class="px-4 py-3 text-center flex justify-center gap-3">
+                                    <td class="px-4 py-3 whitespace-nowrap">1</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">12 April 2026, 09:00</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">12 April 2026, 17:00</td>
+                                    <td class="px-6 py-3 text-center flex justify-center items-center gap-4">
                                         <a href="/tambah_barang"
-                                            class="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white text-xs rounded-md hover:bg-blue-700 transition">
-                                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                            class="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-[13px] font-bold rounded-md hover:bg-blue-700 transition shadow-sm">
+                                            <i class="fa-solid fa-arrow-up-right-from-square text-[12px]"></i>
                                             Buka
                                         </a>
-                                        <button class="text-yellow-600 hover:text-yellow-800 edit-btn">
-                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        <button class="text-yellow-600 hover:text-yellow-800 edit-btn transition-transform hover:scale-110">
+                                            <i class="fa-regular fa-pen-to-square text-[22px]"></i>
                                         </button>
-                                        <button class="text-red-600 hover:text-red-800 delete-btn">
-                                            <i class="fa-regular fa-trash-can"></i>
+                                        <button class="text-red-600 hover:text-red-800 delete-btn transition-transform hover:scale-110">
+                                            <i class="fa-regular fa-trash-can text-[22px]"></i>
                                         </button>
                                     </td>
                                 </tr>
 
                                 <tr class="border-b hover:bg-gray-50">
-                                    <td class="px-4 py-3">2</td>
-                                    <td class="px-4 py-3">13 Mei 2026, 08:00</td>
-                                    <td class="px-4 py-3">13 Mei 2026, 12:30</td>
-                                    <td class="px-4 py-3 text-center flex justify-center gap-3">
+                                    <td class="px-4 py-3 whitespace-nowrap">2</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">13 Mei 2026, 08:00</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">13 Mei 2026, 12:30</td>
+                                    <td class="px-6 py-3 text-center flex justify-center items-center gap-4">
                                         <a href="/tambah_barang"
-                                            class="flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white text-xs rounded-md hover:bg-blue-700 transition">
-                                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                            class="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-[13px] font-bold rounded-md hover:bg-blue-700 transition shadow-sm">
+                                            <i class="fa-solid fa-arrow-up-right-from-square text-[12px]"></i>
                                             Buka
                                         </a>
-                                        <button class="text-yellow-600 hover:text-yellow-800 edit-btn">
-                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        <button class="text-yellow-600 hover:text-yellow-800 edit-btn transition-transform hover:scale-110">
+                                            <i class="fa-regular fa-pen-to-square text-[22px]"></i>
                                         </button>
-                                        <button class="text-red-600 hover:text-red-800 delete-btn">
-                                            <i class="fa-regular fa-trash-can"></i>
+                                        <button class="text-red-600 hover:text-red-800 delete-btn transition-transform hover:scale-110">
+                                            <i class="fa-regular fa-trash-can text-[22px]"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -338,7 +363,7 @@
         const batchCards = document.querySelectorAll('.grid.grid-cols-1 > div');
 
         if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
+            searchInput.addEventListener('input', function (e) {
                 const term = e.target.value.toLowerCase();
                 batchCards.forEach(card => {
                     const titleElement = card.querySelector('h2');
@@ -354,7 +379,7 @@
             });
         }
 
-        // 2. Interaktivitas Tombol Edit & Delete 
+        // 2. Interaktivitas Tombol Edit & Delete
         batchCards.forEach(card => {
             const titleElement = card.querySelector('h2');
             if (!titleElement) return;
@@ -524,6 +549,20 @@
             }
         });
     });
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (sidebar.classList.contains('-translate-x-full')) {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+    }
 </script>
+
+</body>
 
 </html>

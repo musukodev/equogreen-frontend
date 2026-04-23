@@ -12,9 +12,10 @@
       theme: {
         extend: {
           colors: {
+            primary: '#4039c9',
+            accent: '#002eff',
             brand: {
               bg: '#f1f5fa',
-              /* Main Content Background, light bluish gray */
             }
           },
           fontFamily: {
@@ -25,137 +26,128 @@
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* Profile modal */
-    #profile-modal {
-      display: none;
-    }
-
-    #profile-modal.show {
-      display: flex;
-    }
-
-    @keyframes modalSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-animate {
-      animation: modalSlideUp 0.25s ease-out;
-    }
-  </style>
 </head>
 
-<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg font-sans">
 
 
-  <!-- ===== SIDEBAR (sama dengan dashboard) ===== -->
-  <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
-    <div class="h-28 flex items-center px-6 mt-2">
-      <!-- Logo -->
-      <img src="gambar/logo2.png" alt="Equogreen Logo">
+  <!-- Sidebar Overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside id="sidebar"
+    class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-[280px] min-h-screen bg-white flex-shrink-0 flex flex-col shadow-md">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3 px-6 pt-8 pb-6 border-b border-gray-100">
+      <img src="gambar/logo.png" alt="Logo Equogreen" class="w-14 h-14 rounded-full object-cover" />
+      <span class="text-2xl font-bold text-gray-800">Equogreen</span>
     </div>
 
-    <div class="px-8 mt-4">
-      <p class="text-sm text-gray-400 font-medium mb-4">Overview</p>
-      <nav class="flex flex-col gap-5">
-        <div>
-          <a href="#" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-            <i class="fa-solid fa-border-all text-[24px]"></i>
-            <span class="text-[18px]">Dashboard</span>
-          </a>
-          <div class="h-[2px] bg-gray-300 w-[140px]"></div>
-        </div>
-        <div>
-          <a href="/batch_barang" class="flex items-center gap-3 text-black font-bold mb-2">
-            <i class="fa-solid fa-database text-[24px]"></i>
-            <span class="text-[18px]">Periksa Barang</span>
-          </a>
-          <div class="h-[2px] bg-gray-400 w-[150px]"></div>
-        </div>
-        <div>
-          <a href="/notifikasi" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-            <div class="relative">
-              <i class="fa-regular fa-bell text-[24px]"></i>
-              <i
-                class="fa-solid fa-circle-plus text-[12px] bg-white rounded-full absolute -bottom-1 -right-1 text-black"></i>
-            </div>
-            <span class="text-[18px]">Kelola Notifikasi</span>
-          </a>
-          <div class="h-[2px] bg-gray-300 w-[180px]"></div>
-        </div>
-        <div class="w-full">
-          <a href="/validasi-vendor" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-            <i class="ph-bold ph-check-circle text-[26px] -ml-0.5"></i>
-            <span class="text-[17px] tracking-tight">Validasi Vendor</span>
-          </a>
-          <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
-        </div>
-      </nav>
-    </div>
+    <!-- Nav Menu -->
+    <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
-    <div class="px-8 mt-auto mb-10">
-      <p class="text-sm text-gray-400 font-medium mb-4">Pengaturan</p>
-      <nav class="flex flex-col gap-5">
-        <a href="#" class="flex items-center gap-3 text-gray-600 font-bold">
-          <i class="fa-solid fa-gear text-[20px]"></i>
-          <span class="text-[17px]">Pengaturan</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 text-red-500 font-bold">
-          <i class="fa-solid fa-arrow-right-from-bracket text-[20px]"></i>
-          <span class="text-[17px]">Logout</span>
-        </a>
-      </nav>
+      <!-- Dashboard -->
+      <a href="dashboard.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/dashboard layout.png" alt="Dashboard"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Dashboard
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Periksa Barang -->
+      <a href="batch_barang.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/search database.png" alt="Periksa Barang"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Periksa Barang
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Kelola Notifikasi (ACTIVE) -->
+      <a href="notifikasi.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Kelola Notifikasi
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Validasi Vendor -->
+      <a href="validasi-vendor.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/validasi.png" alt="Validasi Vendor"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Validasi Vendor
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Pengaturan -->
+      <a href="#"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/Settings.png" alt="Pengaturan"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Pengaturan
+      </a>
+
+    </nav>
+
+    <!-- Logout -->
+    <div class="px-4 pb-8 border-t border-gray-100 pt-4">
+      <a href="#"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+        <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
+        Logout
+      </a>
     </div>
   </aside>
 
   <!-- ===== MAIN CONTENT ===== -->
-  <main class="flex-1 flex flex-col min-w-0 p-6 lg:p-8 gap-6 overflow-y-auto">
+  <main class="flex-1 flex flex-col min-w-0 p-4 md:p-6 lg:p-8 gap-6 overflow-y-auto">
 
     <!-- Top Header -->
     <header class="flex items-center justify-between">
       <div class="flex items-center gap-4">
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleSidebar()"
+          class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm flex-shrink-0 group">
+          <img src="gambar/garis3.png" alt="Menu"
+            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+        </button>
         <!-- Back Button -->
-        <a href="dashboard.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
+        <a href="dashboard.html"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
+          <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
         </a>
         <div>
-          <h1 class="text-3xl lg:text-4xl font-black text-gray-800 tracking-tight" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Kelola Notifikasi</h1>
+          <h1 class="text-2xl md:text-[36px] font-bold text-[#111827]">Kelola Notifikasi</h1>
         </div>
       </div>
 
       <!-- Profile Section -->
       <div class="flex items-center gap-3">
-        <button class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
-          <img src="gambar/bell-black.png" alt="Notifikasi" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+        <button
+          class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
+          <img src="gambar/bell-black.png" alt="Notifikasi"
+            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
         </button>
-        <img src="gambar/Profileup.png" alt="Profil" class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+        <img src="gambar/Profileup.png" alt="Profil"
+          class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
         <div class="hidden md:block w-px h-10 bg-gray-200"></div>
         <span class="hidden md:block font-medium text-gray-700 text-[17px]">Procurement</span>
       </div>
     </header>
 
     <!-- Filter Bar: Kategori Dropdown + Search -->
-    <div class="flex items-center gap-4">
+    <div class="flex flex-col md:flex-row items-center gap-4">
       <!-- Kategori Dropdown -->
-      <div class="relative w-48">
+      <div class="relative w-full md:w-48">
         <select id="filter-kategori"
           class="w-full appearance-none px-4 py-3 pr-10 rounded-xl border border-gray-800 bg-white text-gray-800 font-medium text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 cursor-pointer">
           <option value="semua">Kategori</option>
@@ -165,14 +157,16 @@
           <option value="cleaning">Cleaning Supply</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>
       <!-- Search Input -->
-      <div class="flex-1 relative">
-        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <div class="w-full md:flex-1 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
         <input id="search-input" type="text" placeholder="Search"
@@ -185,10 +179,10 @@
       <table class="w-full border-collapse" id="notif-table">
         <thead>
           <tr class="border-b border-gray-200 bg-blue-600">
-            <th class="px-5 py-3.5 text-left text-sm font-semibold text-white w-[25%]">Nama Vendor</th>
-            <th class="px-5 py-3.5 text-left text-sm font-semibold text-white w-[25%]">Kategori</th>
-            <th class="px-5 py-3.5 text-center text-sm font-semibold text-white w-[25%]">Profile</th>
-            <th class="px-5 py-3.5 text-center text-sm font-semibold text-white w-[25%]">Kirim Email</th>
+            <th class="px-3 md:px-5 py-3.5 text-left text-xs md:text-sm font-semibold text-white">Nama Vendor</th>
+            <th class="px-3 md:px-5 py-3.5 text-left text-xs md:text-sm font-semibold text-white">Kategori</th>
+            <th class="px-3 md:px-5 py-3.5 text-center text-xs md:text-sm font-semibold text-white">Profile</th>
+            <th class="px-3 md:px-5 py-3.5 text-center text-xs md:text-sm font-semibold text-white">Kirim Email</th>
           </tr>
         </thead>
         <tbody id="table-body">
@@ -200,11 +194,11 @@
   </main>
 
   <!-- ========== MODAL: Profile Vendor ========== -->
-  <div id="profile-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
+  <div id="profile-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
     <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-7 flex flex-col gap-4">
       <!-- Header -->
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-extrabold text-gray-900" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Profil Vendor</h2>
+        <h2 class="text-xl font-bold text-gray-900">Profil Vendor</h2>
         <button id="close-profile-modal"
           class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center hover:bg-red-600 active:scale-90 transition-all duration-200 text-lg font-bold">
           ✕
@@ -214,10 +208,13 @@
       <!-- Vendor Info -->
       <div class="flex flex-col gap-3">
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl" id="modal-avatar">E</div>
+          <div
+            class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl"
+            id="modal-avatar">E</div>
           <div>
             <p class="font-bold text-gray-800 text-lg" id="modal-vendor-name">—</p>
-            <span class="inline-block px-3 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mt-1" id="modal-vendor-kategori">—</span>
+            <span class="inline-block px-3 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mt-1"
+              id="modal-vendor-kategori">—</span>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 mt-2">
@@ -239,10 +236,10 @@
   </div>
 
   <!-- ========== MODAL: Kirim Email ========== -->
-  <div id="email-modal" style="display:none;" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+  <div id="email-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
     <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-7 flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-extrabold text-gray-900" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Kirim Notifikasi Email</h2>
+        <h2 class="text-xl font-bold text-gray-900">Kirim Notifikasi Email</h2>
         <button id="close-email-modal"
           class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center hover:bg-red-600 active:scale-90 transition-all duration-200 text-lg font-bold">
           ✕
@@ -250,7 +247,9 @@
       </div>
       <hr class="border-gray-100" />
       <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
-        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm" id="email-avatar">E</div>
+        <div
+          class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm"
+          id="email-avatar">E</div>
         <div>
           <p class="font-bold text-gray-800 text-sm" id="email-vendor-name">—</p>
           <p class="text-xs text-gray-400" id="email-vendor-email">—</p>
@@ -286,75 +285,75 @@
     // DATA DUMMY VENDOR
     // ============================================================
     const VENDORS = [{
-        nama: 'Elektro Site',
-        kategori: 'Elektronik',
-        email: 'info@elektrosite.co.id',
-        phone: '021-5551234',
-        alamat: 'Jl. Raya Elektronik No.12, Jakarta Barat'
-      },
-      {
-        nama: 'ATK Corp.',
-        kategori: 'ATK',
-        email: 'order@atkcorp.com',
-        phone: '021-5559876',
-        alamat: 'Jl. Stationery Blok A No.5, Tangerang'
-      },
-      {
-        nama: 'FurNiture',
-        kategori: 'Furniture',
-        email: 'sales@furnitureindo.com',
-        phone: '021-5558888',
-        alamat: 'Jl. Mebel Indah No.8, Bekasi'
-      },
-      {
-        nama: 'TokoTech',
-        kategori: 'Elektronik',
-        email: 'cs@tokotech.id',
-        phone: '021-5552222',
-        alamat: 'Jl. Gadget Corner No.3, Jakarta Selatan'
-      },
-      {
-        nama: 'ATKKita',
-        kategori: 'ATK',
-        email: 'hello@atkkita.com',
-        phone: '021-5553333',
-        alamat: 'Jl. Alat Tulis No.17, Depok'
-      },
-      {
-        nama: 'BersihMart',
-        kategori: 'Cleaning Supply',
-        email: 'order@bersihmart.co.id',
-        phone: '021-5554444',
-        alamat: 'Jl. Hygiene No.21, Bogor'
-      },
-      {
-        nama: 'MebelKita',
-        kategori: 'Furniture',
-        email: 'info@mebelkita.com',
-        phone: '021-5555555',
-        alamat: 'Jl. Kayu Jati No.9, Cirebon'
-      },
-      {
-        nama: 'CleanPro',
-        kategori: 'Cleaning Supply',
-        email: 'sales@cleanpro.id',
-        phone: '021-5556666',
-        alamat: 'Jl. Sanitasi No.14, Bandung'
-      },
-      {
-        nama: 'GadgetPro',
-        kategori: 'Elektronik',
-        email: 'support@gadgetpro.id',
-        phone: '021-5557777',
-        alamat: 'Jl. Digital No.6, Jakarta Utara'
-      },
-      {
-        nama: 'Nusa ATK',
-        kategori: 'ATK',
-        email: 'order@nusaatk.com',
-        phone: '021-5558888',
-        alamat: 'Jl. Paper Mart No.11, Surabaya'
-      },
+      nama: 'Elektro Site',
+      kategori: 'Elektronik',
+      email: 'info@elektrosite.co.id',
+      phone: '021-5551234',
+      alamat: 'Jl. Raya Elektronik No.12, Jakarta Barat'
+    },
+    {
+      nama: 'ATK Corp.',
+      kategori: 'ATK',
+      email: 'order@atkcorp.com',
+      phone: '021-5559876',
+      alamat: 'Jl. Stationery Blok A No.5, Tangerang'
+    },
+    {
+      nama: 'FurNiture',
+      kategori: 'Furniture',
+      email: 'sales@furnitureindo.com',
+      phone: '021-5558888',
+      alamat: 'Jl. Mebel Indah No.8, Bekasi'
+    },
+    {
+      nama: 'TokoTech',
+      kategori: 'Elektronik',
+      email: 'cs@tokotech.id',
+      phone: '021-5552222',
+      alamat: 'Jl. Gadget Corner No.3, Jakarta Selatan'
+    },
+    {
+      nama: 'ATKKita',
+      kategori: 'ATK',
+      email: 'hello@atkkita.com',
+      phone: '021-5553333',
+      alamat: 'Jl. Alat Tulis No.17, Depok'
+    },
+    {
+      nama: 'BersihMart',
+      kategori: 'Cleaning Supply',
+      email: 'order@bersihmart.co.id',
+      phone: '021-5554444',
+      alamat: 'Jl. Hygiene No.21, Bogor'
+    },
+    {
+      nama: 'MebelKita',
+      kategori: 'Furniture',
+      email: 'info@mebelkita.com',
+      phone: '021-5555555',
+      alamat: 'Jl. Kayu Jati No.9, Cirebon'
+    },
+    {
+      nama: 'CleanPro',
+      kategori: 'Cleaning Supply',
+      email: 'sales@cleanpro.id',
+      phone: '021-5556666',
+      alamat: 'Jl. Sanitasi No.14, Bandung'
+    },
+    {
+      nama: 'GadgetPro',
+      kategori: 'Elektronik',
+      email: 'support@gadgetpro.id',
+      phone: '021-5557777',
+      alamat: 'Jl. Digital No.6, Jakarta Utara'
+    },
+    {
+      nama: 'Nusa ATK',
+      kategori: 'ATK',
+      email: 'order@nusaatk.com',
+      phone: '021-5558888',
+      alamat: 'Jl. Paper Mart No.11, Surabaya'
+    },
     ];
 
     // ---- Elements ----
@@ -456,12 +455,19 @@
       document.getElementById('modal-vendor-email').textContent = v.email;
       document.getElementById('modal-vendor-phone').textContent = v.phone;
       document.getElementById('modal-vendor-alamat').textContent = v.alamat;
-      profileModal.classList.add('show');
+      profileModal.classList.remove('hidden');
+      profileModal.classList.add('flex');
     }
 
-    closeProfileModal.addEventListener('click', () => profileModal.classList.remove('show'));
+    closeProfileModal.addEventListener('click', () => {
+      profileModal.classList.add('hidden');
+      profileModal.classList.remove('flex');
+    });
     profileModal.addEventListener('click', (e) => {
-      if (e.target === profileModal) profileModal.classList.remove('show');
+      if (e.target === profileModal) {
+        profileModal.classList.add('hidden');
+        profileModal.classList.remove('flex');
+      }
     });
 
     // =============================================
@@ -508,6 +514,18 @@
         toast.style.opacity = '0';
         toast.style.pointerEvents = 'none';
       }, 2800);
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
     }
   </script>
 

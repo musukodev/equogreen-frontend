@@ -12,12 +12,23 @@
             theme: {
                 extend: {
                     colors: {
+                        primary: '#4039c9',
+                        accent: '#002eff',
                         brand: {
-                            bg: '#f1f5fa', /* Main Content Background, light bluish gray */
+                            bg: '#f1f5fa',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        modalSlideUp: {
+                            'from': { opacity: '0', transform: 'translateY(24px) scale(0.96)' },
+                            'to': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        }
+                    },
+                    animation: {
+                        'modal-slide-up': 'modalSlideUp 0.25s ease-out',
                     }
                 }
             }
@@ -26,113 +37,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Hide scrollbar for overflow areas */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
-        }
-    </style>
 </head>
 
-<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg font-sans">
 
-    <!-- Sidebar -->
+    <!-- ===== SIDEBAR ===== -->
     <!-- Sidebar Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
-    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 flex w-[260px] bg-white flex-col flex-shrink-0 h-full shadow-lg">
+    <aside id="sidebar"
+        class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-[280px] min-h-screen bg-white flex-shrink-0 flex flex-col shadow-md">
         <!-- Logo -->
-        <div class="h-28 flex items-center px-6 mt-2 gap-3">
-            <img src="gambar/logo2.png" alt="Equogreen Logo" class="h-10 object-contain">
-            <span class="text-[20px] font-bold text-black tracking-tight">Equogreen</span>
+        <div class="flex items-center gap-3 px-6 pt-8 pb-6 border-b border-gray-100">
+            <img src="gambar/logo.png" alt="Logo Equogreen" class="w-14 h-14 rounded-full object-cover" />
+            <span class="text-2xl font-bold text-gray-800">Equogreen</span>
         </div>
 
-        <div class="px-8 mt-4 w-full">
-            <p class="text-[14px] text-[#9ca3af] font-medium mb-4">Overview</p>
-            <nav class="flex flex-col gap-[22px] w-full">
-                <div class="w-full">
-                    <a href="dashboard_vendor.html" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold text-[#1f2937] ph-squares-four text-[26px]"></i>
-                        <span class="text-[17px] tracking-tight">Dashboard</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[135px]"></div>
-                </div>
-                <div class="w-full">
-                    <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold text-[#4b5563] ph-clock-counter-clockwise text-[26px]"></i>
-                        <span class="text-[17px] tracking-tight">Riwayat</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[100px]"></div>
-                </div>
-            </nav>
-        </div>
+        <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
+            <a href="dashboard_vendor.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/dashboard layout.png" alt="Dashboard"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Dashboard
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <i
+                    class="ph-bold ph-clock-counter-clockwise text-[28px] text-gray-500 group-hover:text-white transition-colors duration-200"></i>
+                <span class="mb-0.5">Riwayat</span>
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/Settings.png" alt="Pengaturan"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Pengaturan
+            </a>
+        </nav>
 
-        <div class="px-8 mt-auto mb-[40px] w-full">
-            <p class="text-[14px] text-[#9ca3af] font-medium mb-5">Pengaturan</p>
-            <nav class="flex flex-col gap-[22px] w-full">
-                <a href="#" class="flex items-center gap-3 text-[#4b5563] font-bold hover:text-black transition">
-                    <i class="ph-bold ph-gear text-[26px]"></i>
-                    <span class="text-[17px] tracking-tight">Pengaturan</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 text-[#ef4444] font-bold hover:text-red-700 transition">
-                    <i class="ph-bold ph-sign-out text-[26px]"></i>
-                    <span class="text-[17px] tracking-tight">Logout</span>
-                </a>
-            </nav>
+        <!-- Logout -->
+        <div class="px-4 pb-8 border-t border-gray-100 pt-4">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+                <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
+                Logout
+            </a>
         </div>
     </aside>
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col h-screen overflow-y-auto w-full">
 
+        <!-- Top Header -->
+        <header class="flex items-center justify-between p-4 md:p-6 lg:px-8 lg:pt-8 lg:pb-0">
+            <div class="flex items-center gap-4">
+                <!-- Mobile Hamburger (Circle Style like Back Button) -->
+                <button onclick="toggleSidebar()"
+                    class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm flex-shrink-0 group">
+                    <img src="gambar/garis3.png" alt="Menu"
+                        class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+                </button>
+                <div>
+                    <h1 class="text-2xl md:text-[36px] font-bold text-[#111827]">Dashboard</h1>
+                    <p class="text-gray-400 md:text-gray-500 text-xs md:text-base mt-0.5 md:mt-1">Kelola semua quotation
+                        Anda dalam satu tempat</p>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="flex items-center gap-3">
+                <!-- Notification Bell -->
+                <button
+                    class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
+                    <img src="gambar/bell-black.png" alt="Notifikasi"
+                        class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+                </button>
+
+                <!-- Profile -->
+                <img src="gambar/Profileup.png" alt="Profil"
+                    class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+                <div class="hidden md:block w-px h-10 bg-gray-200"></div>
+                <span class="hidden md:block font-medium text-gray-700 text-[17px]">Vendor</span>
+            </div>
+        </header>
+
         <!-- Main Workspace Padding Wrapper -->
-        <main class="flex-1 p-5 sm:p-8 lg:p-10 relative w-full">
-
-            <!-- Header -->
-            <header class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-6 w-full gap-5">
-                <!-- Left: Title -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center w-full lg:w-auto gap-4 sm:gap-6">
-                    <div class="flex items-center gap-3">
-                        <button onclick="toggleSidebar()" class="lg:hidden w-11 h-11 rounded-lg border border-gray-300 bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition flex-shrink-0">
-                            <i class="ph-bold ph-list text-xl text-black"></i>
-                        </button>
-                        <div class="ml-2">
-                            <h1 class="text-3xl md:text-4xl font-extrabold text-black mb-0.5 tracking-tight">Dashboard</h1>
-                            <p class="text-[14px] md:text-[15px] text-gray-700 font-medium tracking-tight">Kelola semua quotation Anda dalam satu tempat</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: User Actions -->
-                <div class="flex items-center gap-4 align-middle mt-2 xl:mt-0">
-                    <button class="w-10 h-10 rounded-full border border-black bg-transparent flex items-center justify-center hover:bg-gray-100 transition">
-                        <i class="ph-fill ph-bell text-xl text-black"></i>
-                    </button>
-                    <button class="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md">
-                        <i class="ph-fill ph-user text-xl text-white"></i>
-                    </button>
-                    <div class="h-6 w-[1px] bg-gray-400 mx-1"></div>
-                    <span class="text-[15px] text-black font-medium">ATK Corner</span>
-                </div>
-            </header>
+        <main class="flex-1 flex flex-col min-w-0 p-4 md:p-6 lg:p-8 pt-0 gap-2">
 
             <!-- Summary Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-4 mt-0">
                 <!-- Card 1 -->
                 <div
-                    class="bg-white rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-5 border border-gray-100">
+                    class="bg-white rounded-2xl p-4 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-4 border border-gray-100 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">
                     <div
-                        class="w-[52px] h-[52px] rounded-xl bg-[#c5d5ca] flex items-center justify-center text-gray-600">
+                        class="w-[52px] h-[52px] rounded-xl bg-[#c5d5ca] flex items-center justify-center text-gray-600 transition-transform group-hover:rotate-3">
                         <i class="fa-solid fa-file-invoice text-2xl opacity-70"></i>
                     </div>
                     <div>
@@ -142,8 +140,9 @@
                 </div>
                 <!-- Card 2 -->
                 <div
-                    class="bg-white rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-5 border border-gray-100">
-                    <div class="w-[52px] h-[52px] rounded-xl bg-[#fce5be] flex items-center justify-center">
+                    class="bg-white rounded-2xl p-4 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-4 border border-gray-100 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">
+                    <div
+                        class="w-[52px] h-[52px] rounded-xl bg-[#fce5be] flex items-center justify-center transition-transform group-hover:rotate-3">
                         <i class="fa-solid fa-hourglass-half text-2xl text-[#d97706] opacity-70"></i>
                     </div>
                     <div>
@@ -153,8 +152,9 @@
                 </div>
                 <!-- Card 3 -->
                 <div
-                    class="bg-white rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-5 border border-gray-100">
-                    <div class="w-[52px] h-[52px] rounded-xl bg-[#f6b4b4] flex items-center justify-center">
+                    class="bg-white rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center gap-5 border border-gray-100 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">
+                    <div
+                        class="w-[52px] h-[52px] rounded-xl bg-[#f6b4b4] flex items-center justify-center transition-transform group-hover:rotate-3">
                         <i class="fa-solid fa-circle-check text-2xl text-[#dc2626] opacity-70"></i>
                     </div>
                     <div>
@@ -165,28 +165,32 @@
             </div>
 
             <!-- Pengumuman Card -->
-            <div class="bg-[#4a40ce] rounded-xl p-6 lg:p-8 mb-8 text-white relative overflow-hidden shadow-sm">
-                <div class="relative z-10 w-full md:w-3/4 lg:w-2/3">
-                    <p class="text-[10px] md:text-xs font-bold uppercase tracking-wider mb-2 text-indigo-300">PENGUMUMAN
-                    </p>
-                    <h2 class="text-xl md:text-[26px] font-bold mb-4 md:mb-8 leading-tight tracking-tight">Ketuk untuk
-                        melihat Pengumuman<br class="hidden sm:block">Pengadaan Barang hari ini</h2>
-                    <p class="text-indigo-200 text-xs md:text-sm font-medium opacity-90">Pastikan semua dokumen
-                        quotation telah dilengkapi sebelum batas waktu</p>
+            <div
+                class="bg-[#4039c9] rounded-2xl p-6 md:p-7 lg:p-8 mb-4 text-white relative overflow-hidden shadow-lg min-h-[140px] md:min-h-[160px] flex items-center transition-all duration-300 hover:scale-[1.01] hover:shadow-xl cursor-pointer group">
+                <div class="relative z-10 w-full md:w-3/4">
+                    <p
+                        class="text-[10px] md:text-[11px] font-black uppercase tracking-widest mb-2 md:mb-3 text-white/70">
+                        PENGUMUMAN</p>
+                    <h2 class="text-lg md:text-2xl lg:text-[30px] font-bold mb-3 md:mb-4 leading-tight tracking-tight">
+                        Ketuk untuk melihat
+                        Pengumuman<br class="hidden sm:block">Pengadaan Barang hari ini</h2>
+                    <p class="text-white/80 text-xs md:text-sm lg:text-base font-medium">Pastikan semua dokumen
+                        quotation telah
+                        dilengkapi sebelum batas waktu</p>
                 </div>
-                <!-- Decorative circle -->
+                <!-- Decorative Circles -->
                 <div
-                    class="hidden md:block absolute right-4 lg:right-12 top-1/2 transform -translate-y-1/2 w-32 h-32 lg:w-48 lg:h-48 bg-[#3c41cc] rounded-full mix-blend-multiply opacity-50">
+                    class="hidden md:block absolute right-[-5%] top-[-10%] w-64 h-64 bg-white/5 rounded-full mix-blend-overlay">
                 </div>
-                <!-- Circle with Megaphone Icon -->
+                <!-- Banner Icon Area -->
                 <div
-                    class="hidden md:flex absolute right-8 lg:right-16 top-1/2 transform -translate-y-1/2 w-24 h-24 lg:w-48 lg:h-48 bg-[#3b5bdb] rounded-full items-center justify-center opacity-90">
-                    <i class="fa-solid fa-bullhorn text-white text-5xl lg:text-[100px] -rotate-12"></i>
+                    class="hidden md:flex absolute right-12 lg:right-20 top-1/2 transform -translate-y-1/2 w-24 h-24 lg:w-32 lg:h-32 bg-[#2d4ddd]/65 rounded-full items-center justify-center">
+                    <img src="gambar/pengumuman.png" alt="Banner Icon" class="w-16 h-16 object-contain" />
                 </div>
             </div>
 
             <!-- Daftar Quotation Header -->
-            <div class="mb-6 mt-4">
+            <div class="mb-3 mt-0">
                 <div class="inline-flex items-center gap-3 bg-[#d7dfec] px-4 py-2.5 rounded-xl shadow-sm">
                     <div class="w-8 h-8 rounded-full border-[1.5px] border-black flex items-center justify-center">
                         <i class="fa-regular fa-file-lines text-black text-sm"></i>
@@ -196,10 +200,10 @@
             </div>
 
             <!-- Quotation Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 pb-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 pb-20">
                 <!-- Item 1 -->
                 <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl hover:border-gray-300 cursor-pointer">
+                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl hover:border-gray-300 cursor-pointer">
                     <div class="h-[120px] bg-[#e4e9e5] flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-pen-nib text-[80px] text-[#609966] -rotate-12"></i>
                     </div>
@@ -222,7 +226,7 @@
 
                 <!-- Item 2 -->
                 <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl hover:border-gray-300 cursor-pointer">
+                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl hover:border-gray-300 cursor-pointer">
                     <div class="h-[120px] bg-[#fbf0dc] flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-couch text-[85px] text-[#e5b83b]"></i>
                     </div>
@@ -245,7 +249,7 @@
 
                 <!-- Item 3 -->
                 <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl hover:border-gray-300 cursor-pointer">
+                    class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl hover:border-gray-300 cursor-pointer">
                     <div class="h-[120px] bg-[#fbd4d4] flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-mobile-screen text-[85px] text-[#ce3030]"></i>
                     </div>

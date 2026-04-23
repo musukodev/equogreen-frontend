@@ -12,147 +12,143 @@
       theme: {
         extend: {
           colors: {
+            primary: '#4039c9',
+            accent: '#002eff',
             brand: {
               bg: '#f1f5fa',
-              /* Main Content Background, light bluish gray */
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
+          },
+          keyframes: {
+            modalSlideUp: {
+              'from': { opacity: '0', transform: 'translateY(24px) scale(0.96)' },
+              'to': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            }
+          },
+          animation: {
+            'modal-slide-up': 'modalSlideUp 0.25s ease-out',
           }
         }
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
 
-    /* Modal */
-    #portofolio-modal {
-      display: none;
-    }
-
-    #portofolio-modal.show {
-      display: flex;
-    }
-
-    #confirm-modal {
-      display: none;
-    }
-
-    #confirm-modal.show {
-      display: flex;
-    }
-
-    @keyframes modalSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-animate {
-      animation: modalSlideUp 0.25s ease-out;
-    }
-  </style>
 </head>
 
-<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg font-sans">
+
+  <!-- Sidebar Overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
 
   <!-- ===== SIDEBAR ===== -->
-  <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
-    <div class="h-28 flex items-center px-6 mt-2">
-      <!-- Logo -->
-      <img src="gambar/logo2.png" alt="Equogreen Logo">
+  <aside id="sidebar"
+    class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-[280px] min-h-screen bg-white flex-shrink-0 flex flex-col shadow-md">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3 px-6 pt-8 pb-6 border-b border-gray-100">
+      <img src="gambar/logo.png" alt="Logo Equogreen" class="w-14 h-14 rounded-full object-cover" />
+      <span class="text-2xl font-bold text-gray-800">Equogreen</span>
     </div>
 
-    <div class="px-8 mt-4">
-      <p class="text-sm text-gray-400 font-medium mb-4">Overview</p>
-      <nav class="flex flex-col gap-5">
-        <div>
-          <a href="#" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-            <i class="fa-solid fa-border-all text-[24px]"></i>
-            <span class="text-[18px]">Dashboard</span>
-          </a>
-          <div class="h-[2px] bg-gray-300 w-[140px]"></div>
-        </div>
-        <div>
-          <a href="/bootstrap/" class="flex items-center gap-3 text-black font-bold mb-2">
-            <i class="fa-solid fa-database text-[24px]"></i>
-            <span class="text-[18px]">Periksa Barang</span>
-          </a>
-          <div class="h-[2px] bg-gray-400 w-[150px]"></div>
-        </div>
-        <div>
-          <a href="/notifikasi" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-            <div class="relative">
-              <i class="fa-regular fa-bell text-[24px]"></i>
-              <i
-                class="fa-solid fa-circle-plus text-[12px] bg-white rounded-full absolute -bottom-1 -right-1 text-black"></i>
-            </div>
-            <span class="text-[18px]">Kelola Notifikasi</span>
-          </a>
-          <div class="h-[2px] bg-gray-300 w-[180px]"></div>
-        </div>
-        <div class="w-full">
-          <a href="/validasi-vendor" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-            <i class="ph-bold ph-check-circle text-[26px] -ml-0.5"></i>
-            <span class="text-[17px] tracking-tight">Validasi Vendor</span>
-          </a>
-          <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
-        </div>
-      </nav>
-    </div>
+    <!-- Nav Menu -->
+    <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
-    <div class="px-8 mt-auto mb-10">
-      <p class="text-sm text-gray-400 font-medium mb-4">Pengaturan</p>
-      <nav class="flex flex-col gap-5">
-        <a href="#" class="flex items-center gap-3 text-gray-600 font-bold">
-          <i class="fa-solid fa-gear text-[20px]"></i>
-          <span class="text-[17px]">Pengaturan</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 text-red-500 font-bold">
-          <i class="fa-solid fa-arrow-right-from-bracket text-[20px]"></i>
-          <span class="text-[17px]">Logout</span>
-        </a>
-      </nav>
+      <!-- Dashboard -->
+      <a href="dashboard.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/dashboard layout.png" alt="Dashboard"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Dashboard
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Periksa Barang -->
+      <a href="batch_barang.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/search database.png" alt="Periksa Barang"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Periksa Barang
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Kelola Notifikasi -->
+      <a href="notifikasi.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Kelola Notifikasi
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Validasi Vendor (ACTIVE) -->
+      <a href="validasi-vendor.html"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/validasi.png" alt="Validasi Vendor"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Validasi Vendor
+      </a>
+      <div class="border-b border-gray-100 my-1"></div>
+
+      <!-- Pengaturan -->
+      <a href="#"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+        <img src="gambar/Settings.png" alt="Pengaturan"
+          class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+        Pengaturan
+      </a>
+
+    </nav>
+
+    <!-- Logout -->
+    <div class="px-4 pb-8 border-t border-gray-100 pt-4">
+      <a href="#"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+        <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
+        Logout
+      </a>
     </div>
   </aside>
 
   <!-- ===== MAIN CONTENT ===== -->
-  <main class="flex-1 flex flex-col min-w-0 p-6 lg:p-8 gap-6 overflow-y-auto">
+  <main class="flex-1 flex flex-col min-w-0 p-4 md:p-6 lg:p-8 gap-6 overflow-y-auto">
 
     <!-- Top Header -->
     <header class="flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <a href="dashboard.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleSidebar()"
+          class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm flex-shrink-0 group">
+          <img src="gambar/garis3.png" alt="Menu"
+            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+        </button>
+        <!-- Back Button -->
+        <a href="dashboard.html"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
+          <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
         </a>
         <div>
-          <h1 class="text-3xl lg:text-4xl font-black text-gray-800 tracking-tight" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Validasi Pendaftaran Vendor</h1>
-          <p class="text-gray-500 text-base mt-1">Periksa dan setujui akses vendor baru</p>
+          <h1 class="text-2xl md:text-[36px] font-bold text-[#111827]">Validasi Pendaftaran Vendor</h1>
+          <p class="text-gray-400 md:text-gray-500 text-xs md:text-base mt-0.5 md:mt-1">Periksa dan setujui akses vendor
+            baru</p>
         </div>
       </div>
 
       <!-- Profile Section -->
       <div class="flex items-center gap-3">
-        <button class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
-          <img src="gambar/bell-black.png" alt="Notifikasi" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+        <button
+          class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
+          <img src="gambar/bell-black.png" alt="Notifikasi"
+            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
         </button>
-        <img src="gambar/Profileup.png" alt="Profil" class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+        <img src="gambar/Profileup.png" alt="Profil"
+          class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
         <div class="hidden md:block w-px h-10 bg-gray-200"></div>
         <span class="hidden md:block font-medium text-gray-700 text-[17px]">Procurement</span>
       </div>
@@ -165,7 +161,8 @@
           <tr class="bg-[#002eff] text-white">
             <th class="px-5 py-3.5 text-left text-sm font-semibold border-r border-white/20 w-[22%]">Nama Vendor</th>
             <th class="px-5 py-3.5 text-left text-sm font-semibold border-r border-white/20 w-[18%]">Kategori</th>
-            <th class="px-5 py-3.5 text-center text-sm font-semibold border-r border-white/20 w-[20%]">Tanggal Daftar</th>
+            <th class="px-5 py-3.5 text-center text-sm font-semibold border-r border-white/20 w-[20%]">Tanggal Daftar
+            </th>
             <th class="px-5 py-3.5 text-center text-sm font-semibold border-r border-white/20 w-[18%]">Portofolio</th>
             <th class="px-5 py-3.5 text-center text-sm font-semibold w-[22%]">Aksi</th>
           </tr>
@@ -179,10 +176,10 @@
   </main>
 
   <!-- ========== MODAL: Portofolio ========== -->
-  <div id="portofolio-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
-    <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-7 flex flex-col gap-4">
+  <div id="portofolio-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm hidden">
+    <div class="animate-modal-slide-up bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-7 flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-xl font-extrabold text-gray-900" style="font-family:'Futura-Bold',Helvetica,sans-serif;">Portofolio Vendor</h2>
+        <h2 class="text-xl font-bold text-gray-900">Portofolio Vendor</h2>
         <button id="close-portofolio-modal"
           class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center hover:bg-red-600 active:scale-90 transition-all duration-200 text-lg font-bold">
           ✕
@@ -190,10 +187,13 @@
       </div>
       <hr class="border-gray-100" />
       <div class="flex items-center gap-4">
-        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl" id="modal-avatar">A</div>
+        <div
+          class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl"
+          id="modal-avatar">A</div>
         <div>
           <p class="font-bold text-gray-800 text-lg" id="modal-nama">—</p>
-          <span class="inline-block px-3 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mt-1" id="modal-kategori">—</span>
+          <span class="inline-block px-3 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mt-1"
+            id="modal-kategori">—</span>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-3">
@@ -226,13 +226,15 @@
   </div>
 
   <!-- ========== MODAL: Konfirmasi Aksi ========== -->
-  <div id="confirm-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm">
-    <div class="modal-animate bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 p-7 flex flex-col gap-4 text-center">
+  <div id="confirm-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/40 backdrop-blur-sm hidden">
+    <div
+      class="animate-modal-slide-up bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 p-7 flex flex-col gap-4 text-center">
       <div class="w-16 h-16 rounded-full mx-auto flex items-center justify-center text-3xl" id="confirm-icon-wrap">
         <span id="confirm-icon">✓</span>
       </div>
-      <h2 class="text-lg font-extrabold text-gray-900" id="confirm-title">Setujui Vendor?</h2>
-      <p class="text-sm text-gray-500" id="confirm-desc">Vendor <strong id="confirm-vendor-name">—</strong> akan disetujui aksesnya.</p>
+      <h2 class="text-lg font-bold text-gray-900" id="confirm-title">Setujui Vendor?</h2>
+      <p class="text-sm text-gray-500" id="confirm-desc">Vendor <strong id="confirm-vendor-name">—</strong> akan
+        disetujui aksesnya.</p>
       <div class="flex gap-3 mt-1">
         <button id="confirm-cancel"
           class="flex-1 py-2.5 rounded-xl border-2 border-gray-300 text-gray-700 font-bold text-sm hover:bg-gray-50 transition-all duration-200">
@@ -258,85 +260,85 @@
     // DATA DUMMY VENDOR PENDAFTAR
     // ============================================================
     const VENDORS = [{
-        nama: 'ATK Corp.',
-        kategori: 'ATK',
-        tanggal: '12-01-2026',
-        email: 'order@atkcorp.com',
-        phone: '021-5559876',
-        npwp: '01.234.567.8-012.000',
-        alamat: 'Jl. Stationery Blok A No.5, Tangerang',
-        desc: 'Supplier alat tulis kantor terlengkap sejak 2015.'
-      },
-      {
-        nama: 'Chemicals.co',
-        kategori: 'Kimia',
-        tanggal: '15-01-2026',
-        email: 'info@chemicals.co.id',
-        phone: '021-5551111',
-        npwp: '02.345.678.9-013.000',
-        alamat: 'Jl. Industri Kimia No.7, Cikarang',
-        desc: 'Penyedia bahan kimia industri bersertifikat ISO.'
-      },
-      {
-        nama: 'PT Jayapura',
-        kategori: 'Pantry',
-        tanggal: '17-01-2026',
-        email: 'sales@jayapura.co.id',
-        phone: '021-5552222',
-        npwp: '03.456.789.0-014.000',
-        alamat: 'Jl. Pantry Supply No.3, Jakarta Timur',
-        desc: 'Kebutuhan pantry kantor dari kopi hingga peralatan.'
-      },
-      {
-        nama: 'Elektro Site',
-        kategori: 'Elektronik',
-        tanggal: '20-02-2026',
-        email: 'info@elektrosite.co.id',
-        phone: '021-5551234',
-        npwp: '04.567.890.1-015.000',
-        alamat: 'Jl. Raya Elektronik No.12, Jakarta Barat',
-        desc: 'Distributor peralatan elektronik kantor sejak 2018.'
-      },
-      {
-        nama: 'Siaga 1',
-        kategori: 'Kesehatan',
-        tanggal: '22-03-2026',
-        email: 'order@siaga1.com',
-        phone: '021-5553333',
-        npwp: '05.678.901.2-016.000',
-        alamat: 'Jl. Medika No.9, Bandung',
-        desc: 'Supplier P3K dan alat kesehatan kantor.'
-      },
-      {
-        nama: 'Fur&Ture',
-        kategori: 'Furniture',
-        tanggal: '30-03-2026',
-        email: 'sales@furniture.co.id',
-        phone: '021-5558888',
-        npwp: '06.789.012.3-017.000',
-        alamat: 'Jl. Mebel Indah No.8, Bekasi',
-        desc: 'Furnitur kantor modern dengan garansi 3 tahun.'
-      },
-      {
-        nama: 'PT Bisa',
-        kategori: 'Konstruksi',
-        tanggal: '12-04-2026',
-        email: 'info@ptbisa.co.id',
-        phone: '021-5554444',
-        npwp: '07.890.123.4-018.000',
-        alamat: 'Jl. Konstruksi No.15, Depok',
-        desc: 'Jasa renovasi dan perbaikan gedung kantor.'
-      },
-      {
-        nama: 'Wijaya Group',
-        kategori: 'Investasi',
-        tanggal: '28-05-2026',
-        email: 'contact@wijayagroup.co.id',
-        phone: '021-5555555',
-        npwp: '08.901.234.5-019.000',
-        alamat: 'Jl. Bisnis Tower Lt.12, Jakarta Pusat',
-        desc: 'Konsultan investasi dan pengadaan aset perusahaan.'
-      },
+      nama: 'ATK Corp.',
+      kategori: 'ATK',
+      tanggal: '12-01-2026',
+      email: 'order@atkcorp.com',
+      phone: '021-5559876',
+      npwp: '01.234.567.8-012.000',
+      alamat: 'Jl. Stationery Blok A No.5, Tangerang',
+      desc: 'Supplier alat tulis kantor terlengkap sejak 2015.'
+    },
+    {
+      nama: 'Chemicals.co',
+      kategori: 'Kimia',
+      tanggal: '15-01-2026',
+      email: 'info@chemicals.co.id',
+      phone: '021-5551111',
+      npwp: '02.345.678.9-013.000',
+      alamat: 'Jl. Industri Kimia No.7, Cikarang',
+      desc: 'Penyedia bahan kimia industri bersertifikat ISO.'
+    },
+    {
+      nama: 'PT Jayapura',
+      kategori: 'Pantry',
+      tanggal: '17-01-2026',
+      email: 'sales@jayapura.co.id',
+      phone: '021-5552222',
+      npwp: '03.456.789.0-014.000',
+      alamat: 'Jl. Pantry Supply No.3, Jakarta Timur',
+      desc: 'Kebutuhan pantry kantor dari kopi hingga peralatan.'
+    },
+    {
+      nama: 'Elektro Site',
+      kategori: 'Elektronik',
+      tanggal: '20-02-2026',
+      email: 'info@elektrosite.co.id',
+      phone: '021-5551234',
+      npwp: '04.567.890.1-015.000',
+      alamat: 'Jl. Raya Elektronik No.12, Jakarta Barat',
+      desc: 'Distributor peralatan elektronik kantor sejak 2018.'
+    },
+    {
+      nama: 'Siaga 1',
+      kategori: 'Kesehatan',
+      tanggal: '22-03-2026',
+      email: 'order@siaga1.com',
+      phone: '021-5553333',
+      npwp: '05.678.901.2-016.000',
+      alamat: 'Jl. Medika No.9, Bandung',
+      desc: 'Supplier P3K dan alat kesehatan kantor.'
+    },
+    {
+      nama: 'Fur&Ture',
+      kategori: 'Furniture',
+      tanggal: '30-03-2026',
+      email: 'sales@furniture.co.id',
+      phone: '021-5558888',
+      npwp: '06.789.012.3-017.000',
+      alamat: 'Jl. Mebel Indah No.8, Bekasi',
+      desc: 'Furnitur kantor modern dengan garansi 3 tahun.'
+    },
+    {
+      nama: 'PT Bisa',
+      kategori: 'Konstruksi',
+      tanggal: '12-04-2026',
+      email: 'info@ptbisa.co.id',
+      phone: '021-5554444',
+      npwp: '07.890.123.4-018.000',
+      alamat: 'Jl. Konstruksi No.15, Depok',
+      desc: 'Jasa renovasi dan perbaikan gedung kantor.'
+    },
+    {
+      nama: 'Wijaya Group',
+      kategori: 'Investasi',
+      tanggal: '28-05-2026',
+      email: 'contact@wijayagroup.co.id',
+      phone: '021-5555555',
+      npwp: '08.901.234.5-019.000',
+      alamat: 'Jl. Bisnis Tower Lt.12, Jakarta Pusat',
+      desc: 'Konsultan investasi dan pengadaan aset perusahaan.'
+    },
     ];
 
     // ---- Elements ----
@@ -433,12 +435,19 @@
       document.getElementById('modal-npwp').textContent = v.npwp;
       document.getElementById('modal-alamat').textContent = v.alamat;
       document.getElementById('modal-desc').textContent = v.desc;
-      portofolioModal.classList.add('show');
+      portofolioModal.classList.remove('hidden');
+      portofolioModal.classList.add('flex');
     }
 
-    closePortofolioModal.addEventListener('click', () => portofolioModal.classList.remove('show'));
+    closePortofolioModal.addEventListener('click', () => {
+      portofolioModal.classList.add('hidden');
+      portofolioModal.classList.remove('flex');
+    });
     portofolioModal.addEventListener('click', (e) => {
-      if (e.target === portofolioModal) portofolioModal.classList.remove('show');
+      if (e.target === portofolioModal) {
+        portofolioModal.classList.add('hidden');
+        portofolioModal.classList.remove('flex');
+      }
     });
 
     // =============================================
@@ -474,16 +483,19 @@
         okBtn.className = 'flex-1 py-2.5 rounded-xl text-white font-bold text-sm transition-all duration-200 bg-red-500 hover:bg-red-600';
       }
 
-      confirmModal.classList.add('show');
+      confirmModal.classList.remove('hidden');
+      confirmModal.classList.add('flex');
     }
 
     confirmCancel.addEventListener('click', () => {
-      confirmModal.classList.remove('show');
+      confirmModal.classList.add('hidden');
+      confirmModal.classList.remove('flex');
       pendingAction = null;
     });
     confirmModal.addEventListener('click', (e) => {
       if (e.target === confirmModal) {
-        confirmModal.classList.remove('show');
+        confirmModal.classList.add('hidden');
+        confirmModal.classList.remove('flex');
         pendingAction = null;
       }
     });
@@ -498,7 +510,8 @@
 
       // Hapus vendor dari array
       VENDORS.splice(index, 1);
-      confirmModal.classList.remove('show');
+      confirmModal.classList.add('hidden');
+      confirmModal.classList.remove('flex');
       pendingAction = null;
 
       // Re-render table
@@ -511,7 +524,6 @@
       }
     });
 
-    // ---- Toast Helper ----
     function showToast(msg, isError = false) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toast-msg');
@@ -526,8 +538,19 @@
         toast.style.pointerEvents = 'none';
       }, 2800);
     }
-  </script>
 
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+  </script>
 </body>
 
 </html>

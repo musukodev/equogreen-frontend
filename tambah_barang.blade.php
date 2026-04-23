@@ -12,9 +12,10 @@
             theme: {
                 extend: {
                     colors: {
+                        primary: '#4039c9',
+                        accent: '#002eff',
                         brand: {
                             bg: '#f1f5fa',
-                            /* Main Content Background, light bluish gray */
                         }
                     },
                     fontFamily: {
@@ -24,116 +25,83 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Custom checkbox */
-        .vendor-checkbox {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 3.2rem;
-            height: 2.2rem;
-            border: 1.5px solid #1f2937;
-            border-radius: 0.75rem;
-            background: #fff;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .vendor-checkbox:checked {
-            background: #4039c9;
-            border-color: #4039c9;
-        }
-
-        .vendor-checkbox:checked::after {
-            content: '✓';
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .vendor-checkbox:hover {
-            border-color: #4039c9;
-            box-shadow: 0 0 0 3px rgba(64, 57, 201, 0.1);
-        }
-
-        /* Toast */
-        #toast {
-            display: flex;
-        }
-    </style>
 </head>
 
-<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg">
+<body class="flex h-screen overflow-hidden antialiased text-gray-800 bg-brand-bg font-sans">
 
-    <!-- Sidebar -->
-    <aside class="hidden lg:flex w-64 bg-white flex-col flex-shrink-0 h-full shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10">
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside id="sidebar"
+        class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-[280px] min-h-screen bg-white flex-shrink-0 flex flex-col shadow-md">
         <!-- Logo -->
-        <div class="h-28 flex items-center px-6 mt-2">
-            <img src="gambar/logo2.png" alt="Equogreen Logo">
+        <div class="flex items-center gap-3 px-6 pt-8 pb-6 border-b border-gray-100">
+            <img src="gambar/logo.png" alt="Logo Equogreen" class="w-14 h-14 rounded-full object-cover" />
+            <span class="text-2xl font-bold text-gray-800">Equogreen</span>
         </div>
 
-        <div class="px-8 mt-4">
-            <p class="text-sm text-gray-400 font-medium mb-4">Overview</p>
-            <nav class="flex flex-col gap-5">
-                <div>
-                    <a href="#" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-                        <i class="fa-solid fa-border-all text-[24px]"></i>
-                        <span class="text-[18px]">Dashboard</span>
-                    </a>
-                    <div class="h-[2px] bg-gray-300 w-[140px]"></div>
-                </div>
-                <div>
-                    <a href="/batch_barang" class="flex items-center gap-3 text-black font-bold mb-2">
-                        <i class="fa-solid fa-database text-[24px]"></i>
-                        <span class="text-[18px]">Periksa Barang</span>
-                    </a>
-                    <div class="h-[2px] bg-gray-400 w-[150px]"></div>
-                </div>
-                <div>
-                    <a href="/notifikasi" class="flex items-center gap-3 text-gray-600 font-bold mb-2">
-                        <div class="relative">
-                            <i class="fa-regular fa-bell text-[24px]"></i>
-                            <i
-                                class="fa-solid fa-circle-plus text-[12px] bg-white rounded-full absolute -bottom-1 -right-1 text-black"></i>
-                        </div>
-                        <span class="text-[18px]">Kelola Notifikasi</span>
-                    </a>
-                    <div class="h-[2px] bg-gray-300 w-[180px]"></div>
-                </div>
-                <div class="w-full">
-                    <a href="/validasi-vendor" class="flex items-center gap-3 text-[#1f2937] font-bold mb-[10px] hover:text-black transition">
-                        <i class="ph-bold ph-check-circle text-[26px] -ml-0.5"></i>
-                         <span class="text-[17px] tracking-tight">Validasi Vendor</span>
-                    </a>
-                    <div class="h-[2px] bg-[#d1d5db] w-full max-w-[155px]"></div>
-                </div>
-            </nav>
-        </div>
+        <!-- Nav Menu -->
+        <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
-        <div class="px-8 mt-auto mb-10">
-            <p class="text-sm text-gray-400 font-medium mb-4">Pengaturan</p>
-            <nav class="flex flex-col gap-5">
-                <a href="#" class="flex items-center gap-3 text-gray-600 font-bold">
-                    <i class="fa-solid fa-gear text-[20px]"></i>
-                    <span class="text-[17px]">Pengaturan</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 text-red-500 font-bold">
-                    <i class="fa-solid fa-arrow-right-from-bracket text-[20px]"></i>
-                    <span class="text-[17px]">Logout</span>
-                </a>
-            </nav>
+            <!-- Dashboard -->
+            <a href="dashboard.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/dashboard layout.png" alt="Dashboard"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Dashboard
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Periksa Barang (ACTIVE) -->
+            <a href="batch_barang.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/search database.png" alt="Periksa Barang"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Periksa Barang
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Kelola Notifikasi -->
+            <a href="notifikasi.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Kelola Notifikasi
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Validasi Vendor -->
+            <a href="validasi-vendor.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/validasi.png" alt="Validasi Vendor"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Validasi Vendor
+            </a>
+            <div class="border-b border-gray-100 my-1"></div>
+
+            <!-- Pengaturan -->
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/Settings.png" alt="Pengaturan"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Pengaturan
+            </a>
+
+        </nav>
+
+        <!-- Logout -->
+        <div class="px-4 pb-8 border-t border-gray-100 pt-4">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+                <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
+                Logout
+            </a>
         </div>
     </aside>
 
@@ -141,30 +109,38 @@
     <div class="flex-1 flex flex-col h-screen overflow-y-auto w-full">
 
         <!-- Main Workspace Padding Wrapper -->
-        <main class="flex-1 p-4 md:p-10 relative w-full">
+        <main class="flex-1 flex flex-col min-w-0 p-6 lg:p-8 gap-6 overflow-y-auto relative">
 
-            <!-- Header -->
-            <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 w-full gap-4">
-                <!-- Left: Title & Back -->
+            <!-- Top Header -->
+            <header class="flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <a href="batch_barang.html"
-                        class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-gray-200 transition">
-                        <i class="fa-solid fa-arrow-left text-xl text-black"></i>
+                    <!-- Mobile Hamburger -->
+                    <button onclick="toggleSidebar()"
+                        class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm flex-shrink-0 group">
+                        <img src="gambar/garis3.png" alt="Menu"
+                            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
+                    </button>
+                    <!-- Back Button -->
+                    <a href="periksa_barang.html"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
+                        <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
                     </a>
-                    <h1 class="text-[28px] font-bold text-black leading-tight">Batch 1</h1>
+                    <div>
+                        <h1 class="text-2xl md:text-[36px] font-bold text-[#111827]">Batch 1</h1>
+                    </div>
                 </div>
 
-                <!-- Right: User Actions -->
-                <div class="flex items-center gap-4">
+                <!-- Right: Profile Section -->
+                <div class="flex items-center gap-3">
                     <button
-                        class="w-11 h-11 rounded-full border border-gray-400 bg-transparent flex items-center justify-center hover:bg-gray-100 transition">
-                        <i class="fa-solid fa-bell text-xl text-black"></i>
+                        class="w-12 h-12 flex items-center justify-center bg-[#f0f5ff] rounded-full border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-200 group">
+                        <img src="gambar/bell-black.png" alt="Notifikasi"
+                            class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
                     </button>
-                    <button class="w-11 h-11 rounded-full bg-black flex items-center justify-center shadow-md">
-                        <i class="fa-solid fa-user text-xl text-white"></i>
-                    </button>
-                    <div class="h-8 w-px bg-gray-400 mx-1"></div>
-                    <span class="text-[15px] text-gray-800 font-medium">ATK Corner</span>
+                    <img src="gambar/Profileup.png" alt="Profil"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 hover:border-primary transition-all duration-200 cursor-pointer" />
+                    <div class="hidden md:block w-px h-10 bg-gray-200"></div>
+                    <span class="hidden md:block font-medium text-gray-700 text-[17px]">Procurement</span>
                 </div>
             </header>
 
@@ -186,8 +162,10 @@
                                 <option value="cleaning">Cleaning Supply</option>
                             </select>
                             <!-- Dropdown arrow -->
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </div>
@@ -198,7 +176,8 @@
                     </div>
 
                     <!-- Description Topic -->
-                    <div class="flex items-center gap-4 mt-6 mb-3"> <i class="fa-solid fa-box text-[32px] text-black"></i>
+                    <div class="flex items-center gap-4 mt-6 mb-3"> <i
+                            class="fa-solid fa-box text-[32px] text-black"></i>
                         <div>
                             <h3 class="text-[16px] font-bold text-black leading-tight">Spesifikasi Barang</h3>
                             <p class="text-[14px] text-gray-400 font-medium mt-0.5">Deskripsikan spesifikasi barang yang
@@ -256,15 +235,15 @@
                     <!-- Action Buttons Menu -->
                     <div class="flex flex-col sm:flex-row justify-end items-center gap-3">
                         <button type="button"
-                            class="w-full sm:w-auto px-8 py-2.5 border border-black rounded-lg bg-white text-black font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
+                            class="w-full sm:w-auto px-8 py-2.5 border border-black rounded-lg bg-white text-black font-bold hover:bg-gray-300 transition flex items-center justify-center gap-2">
                             <i class="fa-regular fa-pen-to-square"></i> Edit
                         </button>
                         <button type="button"
-                            class="w-full sm:w-auto px-8 py-2.5 bg-black rounded-lg text-white font-bold hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                            class="w-full sm:w-auto px-8 py-2.5 bg-black rounded-lg text-white font-bold hover:bg-red-500 transition flex items-center justify-center gap-2">
                             <i class="fa-regular fa-trash-can"></i> Hapus
                         </button>
                         <button type="button"
-                            class="w-full sm:w-[150px] py-2.5 bg-[#1e40ff] text-white font-bold rounded-lg hover:bg-blue-700 transition">
+                            class="w-full sm:w-[150px] py-2.5 bg-[#1e40ff] text-white font-bold rounded-lg hover:bg-blue-500 transition">
                             Kirim
                         </button>
                     </div>
@@ -474,6 +453,18 @@
                 toast.style.opacity = '0';
                 toast.style.pointerEvents = 'none';
             }, 2800);
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
         }
     </script>
 </body>
