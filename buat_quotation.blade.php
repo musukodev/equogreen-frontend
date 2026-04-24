@@ -70,12 +70,7 @@
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
-                <img src="gambar/Settings.png" alt="Pengaturan"
-                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
-                Pengaturan
-            </a>
+         
         </nav>
 
         <div class="px-4 pb-8 border-t border-gray-100 pt-4">
