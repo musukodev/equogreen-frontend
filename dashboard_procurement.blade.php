@@ -156,167 +156,38 @@
       </div>
     </section>
 
-    <!-- Kategori Table Card -->
-    <section class="bg-white rounded-[10px] shadow-md p-4 md:p-6 lg:p-8">
-      <h2 class="text-xl font-bold text-gray-800 mb-5">Kategori</h2>
+    <!-- Kategori Section -->
+    <section class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-6">Kategori</h2>
 
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="border-b border-gray-100">
-              <th class="text-left py-2 px-3 text-sm font-bold text-gray-500 uppercase tracking-wide">Kolom 1</th>
-              <th class="text-left py-2 px-3 text-sm font-bold text-gray-500 uppercase tracking-wide">Kolom 2</th>
-              <th class="text-left py-2 px-3 text-sm font-bold text-gray-500 uppercase tracking-wide">Kolom 3</th>
-              <th class="text-left py-2 px-3 text-sm font-bold text-gray-500 uppercase tracking-wide">Kolom 4</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Row 1 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-            <!-- Row 2 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-            <!-- Row 3 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-            <!-- Row 4 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-            <!-- Row 5 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-            <!-- Row 6 -->
-            <tr class="group hover:bg-[#eef3ff] transition-colors duration-150">
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-              <td class="py-2 px-3">
-                <div
-                  class="h-9 bg-white group-hover:bg-[#e6edff] rounded-[10px] border border-black transition-colors duration-150">
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        @php
+          $categories = [
+            'ATK', 'Perangkat Lunak', 'APD', 'Generator Set',
+            'Elektronik', 'Pantry', 'Kemasan', 'Plumbing Set',
+            'Furniture', 'Alat Komunikasi', 'Peralatan Lab', 'Papan Informasi',
+            'Kesehatan', 'Suku Cadang', 'Keamanan Fisik', 'Kendaraan Logistik',
+            'Mesin Produksi', 'Bahan Penolong', 'Pemadam Api', 'K. Operasional',
+            'Perangkat IT', 'Bahan Baku Utama', 'Perangkat Listrik', 'Seragam Karyawan'
+          ];
+        @endphp
+
+        @foreach($categories as $category)
+          <button 
+            type="button"
+            onclick="toggleCategory(this)"
+            class="category-btn flex items-center px-5 py-3 rounded-xl border border-gray-300 bg-white text-gray-700 font-medium text-[15px] transition-all duration-200 hover:border-primary hover:bg-primary/5 hover:shadow-sm text-left group"
+          >
+            <span class="truncate">{{ $category }}</span>
+          </button>
+        @endforeach
       </div>
     </section>
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4">
       <button
+        id="btn-pengaturan-waktu"
         class="flex-1 bg-accent text-white font-bold text-base md:text-lg rounded-2xl py-3 md:py-4 px-6 hover:bg-[#0023cc] active:scale-95 transition-all duration-200 shadow hover:shadow-lg">
         Pengaturan Waktu
       </button>
@@ -375,6 +246,83 @@
         class="w-full rounded-xl border border-gray-200 bg-white p-5 text-sm text-gray-700 resize-none outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 disabled:opacity-60 disabled:cursor-default placeholder:text-gray-400"
         placeholder="Buatlah pengumuman untuk vendor"></textarea>
 
+    </div>
+  </div>
+
+  <!-- ========== MODAL: Pengaturan Waktu ========== -->
+  <div id="waktu-modal"
+    class="hidden fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm items-center justify-center p-4">
+
+    <!-- Modal Content -->
+    <div
+      class="animate-[modalSlideUp_0.25s_ease-out] bg-[#f0f5ff] rounded-[32px] shadow-2xl w-full max-w-xl mx-auto overflow-hidden">
+      
+      <!-- Header -->
+      <div class="bg-white px-8 py-6 flex items-center justify-between border-b border-gray-100">
+        <div>
+          <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">Pengaturan Waktu</h2>
+          <p class="text-gray-500 text-base font-medium mt-0.5">Atur tenggat waktu pengumumuman</p>
+        </div>
+        <button id="close-waktu-modal" class="w-12 h-12 flex items-center justify-center bg-[#ff4d4d] rounded-xl hover:bg-red-600 active:scale-90 transition-all duration-200 shadow-sm">
+           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+           </svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-8 flex flex-col gap-5">
+        
+        <!-- Row 1: Time -->
+        <div class="bg-primary rounded-2xl p-5 flex items-center gap-6">
+          <div class="flex-shrink-0 flex items-center justify-center border-r border-white/20 pr-6">
+             <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/>
+                <path d="M12 7V12L15 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="18.5" cy="18.5" r="4" fill="#4039c9" stroke="white" stroke-width="1.5"/>
+                <path d="M18.5 17V18.5M18.5 20H18.51" stroke="white" stroke-width="2" stroke-linecap="round"/>
+             </svg>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-6">
+             <div class="flex flex-col gap-1.5">
+                <label class="text-white text-sm font-bold ml-1">Start</label>
+                <input type="time" class="w-full bg-white rounded-xl px-4 py-2.5 text-gray-700 outline-none shadow-inner" placeholder="--:--">
+             </div>
+             <div class="flex flex-col gap-1.5">
+                <label class="text-white text-sm font-bold ml-1">End</label>
+                <input type="time" class="w-full bg-white rounded-xl px-4 py-2.5 text-gray-700 outline-none shadow-inner" placeholder="--:--">
+             </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Date -->
+        <div class="bg-primary rounded-2xl p-5 flex items-center gap-6">
+          <div class="flex-shrink-0 flex items-center justify-center border-r border-white/20 pr-6">
+             <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 2V5M16 2V5M3 8.5H21M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="18.5" cy="18.5" r="4" fill="#4039c9" stroke="white" stroke-width="1.5"/>
+                <circle cx="18.5" cy="18.5" r="2" stroke="white" stroke-width="1"/>
+                <path d="M18.5 17.5V18.5L19.5 19" stroke="white" stroke-width="1" stroke-linecap="round"/>
+             </svg>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-6">
+             <div class="flex flex-col gap-1.5">
+                <label class="text-white text-sm font-bold ml-1">Start</label>
+                <input type="date" class="w-full bg-white rounded-xl px-4 py-2.5 text-gray-700 outline-none shadow-inner" placeholder="DD/MM/YYYY">
+             </div>
+             <div class="flex flex-col gap-1.5">
+                <label class="text-white text-sm font-bold ml-1">End</label>
+                <input type="date" class="w-full bg-white rounded-xl px-4 py-2.5 text-gray-700 outline-none shadow-inner" placeholder="DD/MM/YYYY">
+             </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="save-waktu-modal" class="w-full bg-accent text-white font-bold text-lg py-4 rounded-xl hover:bg-blue-700 transition-all duration-200 mt-2 shadow-lg active:scale-[0.98]">
+           Simpan
+        </button>
+
+      </div>
     </div>
   </div>
 
@@ -462,6 +410,21 @@
       }, 2800);
     }
 
+    // ---- Toggle Category (Multi-select) ----
+    function toggleCategory(btn) {
+      const isSelected = btn.classList.contains('selected');
+      
+      if (isSelected) {
+        // Deselect
+        btn.classList.remove('selected', 'bg-primary', 'text-white', 'border-primary');
+        btn.classList.add('bg-white', 'text-gray-700', 'border-gray-300');
+      } else {
+        // Select
+        btn.classList.add('selected', 'bg-primary', 'text-white', 'border-primary');
+        btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-300');
+      }
+    }
+
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
@@ -473,6 +436,31 @@
         overlay.classList.add('hidden');
       }
     }
+
+    // ---- Pengaturan Waktu Modal Logic ----
+    const waktuModal = document.getElementById('waktu-modal');
+    const btnWaktu = document.getElementById('btn-pengaturan-waktu');
+    const closeWaktuBtn = document.getElementById('close-waktu-modal');
+    const saveWaktuBtn = document.getElementById('save-waktu-modal');
+
+    btnWaktu.addEventListener('click', () => {
+      waktuModal.classList.remove('hidden');
+      waktuModal.classList.add('flex');
+    });
+
+    closeWaktuBtn.addEventListener('click', () => {
+      waktuModal.classList.add('hidden');
+      waktuModal.classList.remove('flex');
+    });
+
+    waktuModal.addEventListener('click', (e) => {
+      if (e.target === waktuModal) closeWaktuBtn.click();
+    });
+
+    saveWaktuBtn.addEventListener('click', () => {
+      closeWaktuBtn.click();
+      showToast('Pengaturan waktu berhasil disimpan!');
+    });
   </script>
 
 </body>
