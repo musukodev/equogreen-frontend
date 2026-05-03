@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
         }
     </script>
 </head>
+
 <body class="m-0 p-0 font-inter bg-gray-50 text-slate-900 antialiased">
     <div class="flex min-h-screen w-full">
         <!-- Left Side: Login Form -->
@@ -39,47 +41,59 @@
                         <i class="ph-fill ph-user-circle text-2xl text-black"></i>
                         <span>Login</span>
                     </div>
-                    
+
                     <!-- Form -->
-                    <form class="p-6" action="dashboard.html">
+                    <!-- Form -->
+                    <form class="p-6" method="POST" action="{{ route('login') }}">
+                        @csrf
+
                         <!-- Email Field -->
                         <div class="mb-5">
                             <label class="block text-base font-normal mb-2 text-slate-900">Email</label>
-                            <input 
-                                type="email" 
-                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors" 
-                                placeholder="Masukkan alamat email Anda" 
-                                required
-                            >
+                            <input
+                                type="email"
+                                name="email"
+                                value="{{ old('email') }}"
+                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors @error('email') border-red-500 @enderror"
+                                placeholder="Masukkan alamat email Anda"
+                                required autofocus>
+                            @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
-                        
+
                         <!-- Password Field -->
                         <div class="mb-5">
                             <label class="block text-base font-normal mb-2 text-slate-900">Password</label>
-                            <input 
-                                type="password" 
-                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors" 
-                                placeholder="Masukkan password Anda" 
-                                required
-                            >
+                            <input
+                                type="password"
+                                name="password"
+                                class="w-full h-11 border border-slate-400 rounded-md px-3.5 font-normal text-sm placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors @error('password') border-red-500 @enderror"
+                                placeholder="Masukkan password Anda"
+                                required>
+                            @error('password')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
-                        
+
                         <!-- Forgot Password -->
                         <div class="text-right -mt-2.5 mb-6">
-                            <a href="#" class="text-blue-600 text-sm no-underline hover:underline">Lupa password?</a>
+                            @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="text-blue-600 text-sm no-underline hover:underline">Lupa password?</a>
+                            @endif
                         </div>
-                        
+
                         <!-- Login Button -->
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             class="w-full h-11 bg-blue-600 text-white border-none rounded-md text-base font-medium cursor-pointer hover:bg-blue-700 transition-colors mb-6">
-                            <a href="/batch_barang">Log In</a>
+                            Log In
                         </button>
-                        
+
                         <!-- Register Link -->
                         <div class="text-center text-sm text-slate-900">
-                            Belum punya akun? 
-                            <a href="/registrasi" class="text-blue-600 no-underline hover:underline">Registrasi.</a>
+                            Belum punya akun?
+                            <a href="{{ route('registrasi') }}" class="text-blue-600 no-underline hover:underline">Registrasi.</a>
                         </div>
                     </form>
                 </div>
@@ -92,4 +106,5 @@
         </div>
     </div>
 </body>
+
 </html>

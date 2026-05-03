@@ -53,14 +53,14 @@
         </div>
 
         <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
-            <a href="dashboard_vendor.html"
+            <a href="{{ route('vendor-dashboard') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/dashboard layout.png" alt="Dashboard"
                     class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
                 Dashboard
             </a>
             <div class="border-b border-gray-100 my-1"></div>
-            <a href="#"
+            <a href="{{ route('vendor-riwayat') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
                 <i
                     class="ph-bold ph-clock-counter-clockwise text-[28px] text-gray-500 group-hover:text-white transition-colors duration-200"></i>
@@ -72,11 +72,13 @@
 
         <!-- Logout -->
         <div class="px-4 pb-8 border-t border-gray-100 pt-4">
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
-                <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
-                Logout
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
+                    <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
+                    Logout
+                </button>
+            </form>
         </div>
     </aside>
 

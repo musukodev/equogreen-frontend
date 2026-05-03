@@ -181,7 +181,6 @@
             modal.classList.remove('flex');
         }
 
-        // Close on overlay click
         window.onclick = function(event) {
             const modal = document.getElementById('modal-rincian');
             if (event.target == modal) {

@@ -54,7 +54,7 @@
         </div>
 
         <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
-            <a href="dashboard_vendor.html"
+            <a href="{{ route('vendor-dashboard') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/dashboard layout.png" alt="Dashboard"
                     class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
@@ -62,8 +62,8 @@
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+            <a href="{{  route('vendor-riwayat') }}"
+                cla ss="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
                 <i
                     class="ph-bold ph-clock-counter-clockwise text-[28px] text-gray-500 group-hover:text-white transition-colors duration-200"></i>
                 <span class="mb-0.5">Riwayat</span>
@@ -97,7 +97,7 @@
                         <img src="gambar/garis3.png" alt="Menu" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
                     </button>
                     <!-- Back Button -->
-                    <a href="dashboard_vendor.html"
+                    <a href="{{ route('vendor-dashboard') }}"
                         class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
                         <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
                     </a>

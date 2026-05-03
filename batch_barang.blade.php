@@ -49,28 +49,28 @@
         <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
             <!-- Dashboard -->
-            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+            <a href="{{ route('procurement-dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/dashboard layout.png" alt="Dashboard" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
                 Dashboard
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
             <!-- Periksa Barang (ACTIVE) -->
-            <a href="batch_barang.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+            <a href="{{ route('procurement-batch-list') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/search database.png" alt="Periksa Barang" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
                 Batch Barang
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
             <!-- Kelola Notifikasi -->
-            <a href="notifikasi.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+            <a href="{{ route('procurement-notifikasi') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
                 Kelola Notifikasi
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
             <!-- Validasi Vendor -->
-            <a href="validasi-vendor.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+            <a href="{{ route('procurement-validasi-vendor') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
                 <img src="gambar/validasi.png" alt="Validasi Vendor" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert"/>
                 Validasi Vendor
             </a>
@@ -107,7 +107,7 @@
                                 <img src="gambar/garis3.png" alt="Menu" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
                             </button>
                             <!-- Back Button -->
-                            <a href="menu-periksa-barang.html"
+                            <a href="{{ route('procurement-batch-list') }}"
                                 class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white transition-all duration-200 shadow-sm">
                                 <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
                             </a>
@@ -116,11 +116,11 @@
 
                         <!-- Tabs Section (Desktop) -->
                         <div class="hidden md:flex items-center gap-8 ml-2">
-                            <a href="/batch_barang"
+                            <a href="{{ route('procurement-batch_barang') }}"
                                 class="text-[17px] font-bold text-black border-b-[3px] border-primary pb-1 whitespace-nowrap">
                                 Buat Batch
                             </a>
-                            <a href="/periksa_barang"
+                            <a href="{{ route('procurement-periksa_barang') }}"
                                 class="text-[17px] font-medium text-gray-400 hover:text-primary transition-colors pb-1 whitespace-nowrap">
                                 Periksa Barang
                             </a>
@@ -138,11 +138,11 @@
 
                 <!-- Tabs Section (Mobile Only) -->
                 <div class="flex md:hidden items-center gap-6 px-1">
-                    <a href="/batch_barang"
+                    <a href="{{ route('procurement-batch_barang') }}"
                         class="text-[15px] font-bold text-black border-b-2 border-primary pb-1 whitespace-nowrap">
                         Buat Batch
                     </a>
-                    <a href="/periksa_barang"
+                    <a href="{{ route('procurement-periksa_barang') }}"
                         class="text-[15px] font-medium text-gray-400 hover:text-primary transition-colors pb-1 whitespace-nowrap">
                         Periksa Barang
                     </a>
@@ -202,7 +202,7 @@
                                     <td class="px-4 py-3 whitespace-nowrap">12 April 2026, 09:00</td>
                                     <td class="px-4 py-3 whitespace-nowrap">12 April 2026, 17:00</td>
                                     <td class="px-6 py-3 text-center flex justify-center items-center gap-4">
-                                        <a href="/tambah_barang"
+                                        <a href="{{ route('procurement-tambah_barang') }}"
                                             class="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-[13px] font-bold rounded-md hover:bg-blue-700 transition shadow-sm">
                                             <i class="fa-solid fa-arrow-up-right-from-square text-[12px]"></i>
                                             Buka

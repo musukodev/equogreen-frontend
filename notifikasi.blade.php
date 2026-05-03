@@ -53,7 +53,7 @@
     <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
       <!-- Dashboard -->
-      <a href="dashboard.html"
+      <a href="{{ route('procurement-dashboard') }}"
         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/dashboard layout.png" alt="Dashboard"
           class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
@@ -62,7 +62,7 @@
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Periksa Barang -->
-      <a href="batch_barang.html"
+      <a href="{{ route('procurement-batch-list') }}"
         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/search database.png" alt="Periksa Barang"
           class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
@@ -71,7 +71,7 @@
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Kelola Notifikasi (ACTIVE) -->
-      <a href="notifikasi.html"
+      <a href="{{ route('procurement-notifikasi') }}"
         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi"
           class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
@@ -80,7 +80,7 @@
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Validasi Vendor -->
-      <a href="validasi-vendor.html"
+      <a href="{{ route('procurement-validasi-vendor') }}"
         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/validasi.png" alt="Validasi Vendor"
           class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />

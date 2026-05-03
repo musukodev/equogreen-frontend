@@ -76,28 +76,28 @@
     <nav class="flex-1 px-4 py-6 flex flex-col gap-1">
 
       <!-- Dashboard -->
-      <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+      <a href="{{ route('procurement-dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/dashboard layout.png" alt="Dashboard" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
         Dashboard
       </a>
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Periksa Barang (ACTIVE) -->
-      <a href="menu-periksa-barang.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
+      <a href="{{ route('procurement-batch-list') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-bold text-[17px] bg-[#eef3ff] text-primary transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/search database.png" alt="Periksa Barang" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
         Batch Barang
       </a>
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Kelola Notifikasi -->
-      <a href="menu-kelola-notifikasi-procurement.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+      <a href="{{ route('procurement-notifikasi') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/Add Reminder.png" alt="Kelola Notifikasi" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
         Kelola Notifikasi
       </a>
       <div class="border-b border-gray-100 my-1"></div>
 
       <!-- Validasi Vendor -->
-      <a href="validasi-vendor.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+      <a href="{{ route('procurement-validasi-vendor') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
         <img src="gambar/validasi.png" alt="Validasi Vendor" class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
         Validasi Vendor
       </a>
@@ -110,10 +110,10 @@
 
     <!-- Logout -->
     <div class="px-4 pb-8 border-t border-gray-100 pt-4">
-      <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 font-bold text-[17px] transition-all duration-200 hover:bg-red-50 group">
-        <img src="gambar/logout.png" alt="Logout" class="w-7 h-7 object-contain" />
-        Logout
-      </a>
+     <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit">Logout</button>
+</form>
     </div>
   </aside>
 
@@ -129,7 +129,7 @@
           <img src="gambar/garis3.png" alt="Menu" class="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert" />
         </button>
         <!-- Back Button -->
-        <a href="dashboard.html"
+        <a href="{{ route('procurement-dashboard') }}"
           class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shadow-sm">
           <img src="gambar/Back Arrow.png" alt="Back" class="w-6 h-6 object-contain brightness-0" />
         </a>
@@ -176,7 +176,7 @@
     <section id="folder-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
       <!-- Folder Card Template (repeated for each year) -->
-      <a href="periksa-barang-detail.html" class="folder-card group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 overflow-hidden cursor-pointer" data-year="2020">
+      <a href="{{ route('procurement-batch_barang') }}" class="folder-card group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 overflow-hidden cursor-pointer" data-year="2020">
         <div class="h-32 bg-[#e8e8e0] group-hover:bg-primary/10 transition-colors duration-200 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-300 group-hover:text-primary/40 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
