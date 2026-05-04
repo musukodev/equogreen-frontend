@@ -141,89 +141,101 @@
                 </div>
 
                 <!-- Form Card -->
-                <div class="bg-white rounded-xl border border-gray-400 p-6 shadow-sm flex flex-col transition-all duration-300 hover:scale-[1.005] hover:shadow-md">
+                <div class="w-full">
 
-                    <!-- Deadline Box -->
-                    <div class="bg-[#ebeaef] rounded-md px-4 pt-3 pb-1 mb-6">
-                        <p class="text-black text-[13px] md:text-[15px]"><span class="font-bold">Tenggat Waktu:</span>
-                            Selasa, 12 Februari 2026, 11:20</p>
-                        <div class="h-px bg-gray-500 w-full mt-2.5"></div>
-                    </div>
-
-                    <!-- Description Area -->
-                    <div class="flex items-start gap-4 mb-6 pt-1">
-                        <!-- Icon outline box -->
-                        <i class="fa-solid fa-box text-[24px] md:text-[28px] text-black"></i>
+    <!-- Topic Card -->
+                    <div class="bg-white rounded-xl border border-gray-400 shadow-sm p-4 mb-6 flex items-center gap-3 md:gap-4 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">
+                        <div class="w-[42px] h-[42px] md:w-[50px] md:h-[50px] rounded-full bg-[#4a40ce] flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-box-open text-white text-lg md:text-xl"></i>
+                        </div>
                         <div>
-                            <h3 class="text-[15px] md:text-[16px] font-bold text-black mb-0.5">Deskripsi Spesifikasi
-                                Barang</h3>
-                            <p class="text-[14px] text-gray-500">Perhatikan spesifikasi barang dengan baik</p>
+                            <h2 class="text-base md:text-lg font-bold text-black mb-0.5">Pengadaan Barang ATK</h2>
+                            <p class="text-gray-500 text-xs md:text-[15px]">ATK</p>
                         </div>
                     </div>
 
-                    <!-- Data Table -->
-                    <div class="w-full mb-8 overflow-x-auto">
-                        <table class="w-full border-collapse border border-gray-400 min-w-[500px]">
-                            <thead>
-                                <tr class="bg-[#3a3fe0] text-white text-[15px]">
-                                    <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Nama Barang
-                                    </th>
-                                    <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Spesifikasi
-                                        detail</th>
-                                    <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Jumlah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                    <td class="border border-gray-400 h-[40px]"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- Form Card: Mengubah <div> menjadi <form> dan menambahkan method, action, serta enctype -->
+                    <form action="{{ route('fastexcel.import') }}" method="POST" enctype="multipart/form-data" class="bg-white rounded-xl border border-gray-400 p-6 shadow-sm flex flex-col transition-all duration-300 hover:scale-[1.005] hover:shadow-md">
+                        @csrf                        <!-- Deadline Box -->
+                        <div class="bg-[#ebeaef] rounded-md px-4 pt-3 pb-1 mb-6">
+                            <p class="text-black text-[13px] md:text-[15px]"><span class="font-bold">Tenggat Waktu:</span>
+                                Selasa, 12 Februari 2026, 11:20</p>
+                            <div class="h-px bg-gray-500 w-full mt-2.5"></div>
+                        </div>
 
-                    <!-- Action Buttons -->
-                    <div class="space-y-3 w-full">
-                        <button type="button"
-                            class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
-                            Download Template
-                        </button>
-                        <button type="button"
-                            class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
-                            Upload File
-                        </button>
-                        <div class="w-full pt-1 pb-1">
-                            <div
-                                class="border-[1.5px] border-gray-400 rounded-lg py-7 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition w-full">
-                                <i class="fa-solid fa-arrow-up-from-bracket text-[#a0a0a0] mb-2 text-lg"></i>
-                                <span class="text-[#a0a0a0] text-[15px]">Upload File
-
-
-                                </span>
+                        <!-- Description Area -->
+                        <div class="flex items-start gap-4 mb-6 pt-1">
+                            <!-- Icon outline box -->
+                            <i class="fa-solid fa-box text-[24px] md:text-[28px] text-black"></i>
+                            <div>
+                                <h3 class="text-[15px] md:text-[16px] font-bold text-black mb-0.5">Deskripsi Spesifikasi Barang</h3>
+                                <p class="text-[14px] text-gray-500">Perhatikan spesifikasi barang dengan baik</p>
                             </div>
-                            <p class="text-[#a0a0a0] text-[13px] mt-1.5 ml-1">Accepted files: All file types</p>
                         </div>
-                        <button type="submit"
-                            class="w-full bg-[#1e40ff] text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-blue-700 transition relative">
-                            Kirim
-                        </button>
-                    </div>
 
-                    <!-- Footer Link -->
-                    <div class="mt-5 text-[14px] text-black">
-                        Tata cara quotation <a href="#" class="text-[#1e40ff]">Unduh</a>
-                    </div>
+                        <!-- Data Table -->
+                        <div class="w-full mb-8 overflow-x-auto">
+                            <table class="w-full border-collapse border border-gray-400 min-w-[500px]">
+                                <thead>
+                                    <tr class="bg-[#3a3fe0] text-white text-[15px]">
+                                        <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Nama Barang</th>
+                                        <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Spesifikasi detail</th>
+                                        <th class="border border-gray-400 py-2.5 font-normal w-1/3 text-center">Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                        <td class="border border-gray-400 h-[40px]"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="space-y-3 w-full">
+                            <button type="button" class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
+                                Download Template
+                            </button>
+                            <button type="button" class="w-full bg-black text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-gray-800 transition">
+                                Upload File
+                            </button>
+                            
+                            <!-- MODIFIKASI UPLOAD BOX DISINI -->
+                            <div class="w-full pt-1 pb-1">
+                                <!-- Mengubah div menjadi label agar clickable, 'for' harus sama dengan 'id' pada input -->
+                                <label for="file-upload" class="border-[1.5px] border-gray-400 rounded-lg py-7 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition w-full">
+                                    <i class="fa-solid fa-arrow-up-from-bracket text-[#a0a0a0] mb-2 text-lg"></i>
+                                    <span class="text-[#a0a0a0] text-[15px]">Upload File</span>
+                                    <!-- Input file disembunyikan menggunakan class 'hidden' -->
+                                    <input id="file-upload" name="file" type="file" class="hidden" />
+                                </label>
+                                <p class="text-[#a0a0a0] text-[13px] mt-1.5 ml-1">Accepted files: All file types</p>
+                            </div>
+
+                            <!-- Tombol submit -->
+                            <button type="submit" class="w-full bg-[#1e40ff] text-white text-center text-[15px] py-3.5 rounded-lg hover:bg-blue-700 transition relative">
+                                Kirim
+                            </button>
+                        </div>
+
+                        <!-- Footer Link -->
+                        <div class="mt-5 text-[14px] text-black">
+                            Tata cara quotation <a href="#" class="text-[#1e40ff]">Unduh</a>
+                        </div>
+                    </form>
+
                 </div>
 
             </div>

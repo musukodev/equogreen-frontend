@@ -203,58 +203,69 @@
 
     <!-- ========== MODAL: Rincian Item ========== -->
     <div id="modal-rincian" class="hidden fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm items-center justify-center p-4">
-        <div class="animate-[modalSlideUp_0.25s_ease-out] bg-white rounded-2xl shadow-2xl w-full max-w-4xl mx-auto overflow-hidden">
-            <!-- Header -->
-            <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
-                <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest">RINCIAN ITEM</h2>
-                <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="ph-bold ph-x text-2xl text-gray-400"></i>
-                </button>
-            </div>
-            
-            <!-- Table Body -->
-            <div class="p-6">
-                <div class="overflow-x-auto rounded-xl border border-gray-100">
-                    <table class="w-full text-left border-collapse">
-                        <thead class="bg-primary">
-                            <tr class="text-white text-xs md:text-sm font-bold">
-                                <th class="px-4 py-4 text-center w-12 border-r border-white/10">#</th>
-                                <th class="px-4 py-4 border-r border-white/10">Nama Barang</th>
-                                <th class="px-4 py-4 border-r border-white/10">Satuan</th>
-                                <th class="px-4 py-4 text-center border-r border-white/10">Qty</th>
-                                <th class="px-4 py-4 text-right border-r border-white/10">Harga Satuan</th>
-                                <th class="px-4 py-4 text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50">
-                            @php
-                                $items = [
-                                    ['Kertas HVS A4 70gsm', 'Rim', 50, 40000],
-                                    ['Kertas HVS F4 80gsm', 'Rim', 30, 48000],
-                                    ['Pulpen Gel 0.5mm (Kotak)', 'Kotak', 20, 95000],
-                                    ['Spidol Whiteboard (Set)', 'Set', 15, 78000],
-                                    ['Amplop Coklat Folio', 'Kotak', 10, 55000],
-                                    ['Buku Tulis 58lbr (Lusin)', 'Lusin', 12, 42000],
-                                    ['Gunting Besar 21cm', 'Pcs', 8, 35000],
-                                    ['Isolasi Bening 2"', 'Kotak', 6, 120000],
-                                ];
-                            @endphp
-                            @foreach($items as $index => $item)
-                            <tr class="text-xs md:text-sm text-gray-700 hover:bg-gray-50 transition-colors">
-                                <td class="px-4 py-4 text-center text-gray-300 font-medium border-r border-gray-50">{{ $index + 1 }}</td>
-                                <td class="px-4 py-4 font-semibold border-r border-gray-50">{{ $item[0] }}</td>
-                                <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item[1] }}</td>
-                                <td class="px-4 py-4 text-center font-medium border-r border-gray-50">{{ $item[2] }}</td>
-                                <td class="px-4 py-4 text-right text-gray-500 border-r border-gray-50">Rp {{ number_format($item[3], 0, ',', '.') }}</td>
-                                <td class="px-4 py-4 text-right font-extrabold text-black">Rp {{ number_format($item[2] * $item[3], 0, ',', '.') }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+    <div class="animate-[modalSlideUp_0.25s_ease-out] bg-white rounded-2xl shadow-2xl w-full max-w-7xl mx-auto overflow-hidden">
+        <!-- Header -->
+        <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest">RINCIAN LENGKAP QUOTATION</h2>
+            <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="ph-bold ph-x text-2xl text-gray-400"></i>
+            </button>
+        </div>
+        
+        <!-- Table Body -->
+        <div class="p-6">
+            <div class="overflow-x-auto rounded-xl border border-gray-100">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-primary">
+                        <tr class="text-white text-xs md:text-sm font-bold whitespace-nowrap">
+                            <th class="px-4 py-4 text-center w-12 border-r border-white/10">#</th>
+                            <th class="px-4 py-4 border-r border-white/10">Coll No.</th>
+                            <th class="px-4 py-4 border-r border-white/10">RFQ No.</th>
+                            <th class="px-4 py-4 border-r border-white/10">Material No.</th>
+                            <th class="px-4 py-4 border-r border-white/10 min-w-[200px]">Description</th>
+                            <th class="px-4 py-4 text-center border-r border-white/10">Qty</th>
+                            <th class="px-4 py-4 text-center border-r border-white/10">UoM</th>
+                            <th class="px-4 py-4 text-center border-r border-white/10">Currency</th>
+                            <th class="px-4 py-4 text-right border-r border-white/10">Net Price</th>
+                            <th class="px-4 py-4 text-right border-r border-white/10">Total Price</th>
+                            <th class="px-4 py-4 border-r border-white/10">Incoterm</th>
+                            <th class="px-4 py-4 border-r border-white/10">Destination</th>
+                            <th class="px-4 py-4 border-r border-white/10 min-w-[150px]">Remark 1</th>
+                            <th class="px-4 py-4 border-r border-white/10 min-w-[150px]">Remark 2</th>
+                            <th class="px-4 py-4 border-r border-white/10">Payment Term</th>
+                            <th class="px-4 py-4 text-center border-r border-white/10">Lead Time (Wks)</th>
+                            <th class="px-4 py-4">Quotation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        
+                        @foreach($quotations as $index => $item)
+                        <tr class="text-xs md:text-sm text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
+                            <td class="px-4 py-4 text-center text-gray-300 font-medium border-r border-gray-50">{{ $index + 1 }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item['coll_no'] }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item['rfq_no'] }}</td>
+                            <td class="px-4 py-4 font-mono text-gray-600 border-r border-gray-50">{{ $item['material_no'] }}</td>
+                            <td class="px-4 py-4 font-semibold border-r border-gray-50 truncate max-w-xs" title="{{ $item['description'] }}">{{ $item['description'] }}</td>
+                            <td class="px-4 py-4 text-center font-medium border-r border-gray-50">{{ $item['qty'] }}</td>
+                            <td class="px-4 py-4 text-center text-gray-500 border-r border-gray-50">{{ $item['uom'] }}</td>
+                            <td class="px-4 py-4 text-center text-gray-500 border-r border-gray-50">{{ $item['currency'] }}</td>
+                            <td class="px-4 py-4 text-right text-gray-500 border-r border-gray-50">{{ number_format($item['net_price'], 0, ',', '.') }}</td>
+                            <td class="px-4 py-4 text-right font-extrabold text-black border-r border-gray-50">{{ number_format($item['qty'] * $item['net_price'], 0, ',', '.') }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item['incoterm'] }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item['destination'] }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50 truncate max-w-[150px]" title="{{ $item['remark_1'] }}">{{ $item['remark_1'] }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50 truncate max-w-[150px]" title="{{ $item['remark_2'] }}">{{ $item['remark_2'] }}</td>
+                            <td class="px-4 py-4 text-gray-500 border-r border-gray-50">{{ $item['payment_term'] }}</td>
+                            <td class="px-4 py-4 text-center text-gray-500 border-r border-gray-50">{{ $item['lead_time_weeks'] }}</td>
+                            <td class="px-4 py-4 text-gray-500">{{ date('d M Y', strtotime($item['quotation_date'])) }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 
