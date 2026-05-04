@@ -24,7 +24,7 @@
 </head>
 
 <body class="m-0 p-0 font-inter bg-gray-50 text-slate-900 antialiased">
-    <div class="flex min-h-screen w-full">
+    <div class="flex h-screen w-full">
         <!-- Left Side: Login Form -->
         <div class="flex-1 basis-1/2 max-w-1/2 flex items-center justify-center p-8">
             <div class="w-full max-w-md -mt-12">
