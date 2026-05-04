@@ -76,12 +76,7 @@
                             @enderror
                         </div>
 
-                        <!-- Forgot Password -->
-                        <div class="text-right -mt-2.5 mb-6">
-                            @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-blue-600 text-sm no-underline hover:underline">Lupa password?</a>
-                            @endif
-                        </div>
+                        
 
                         <!-- Login Button -->
                         <button
