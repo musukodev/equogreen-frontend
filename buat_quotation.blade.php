@@ -62,11 +62,11 @@
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
-            <a href="{{  route('vendor-riwayat') }}"
-                cla ss="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
-                <i
-                    class="ph-bold ph-clock-counter-clockwise text-[28px] text-gray-500 group-hover:text-white transition-colors duration-200"></i>
-                <span class="mb-0.5">Riwayat</span>
+            <a href="{{ route('vendor-riwayat') }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
+                <img src="gambar/riwayat.png" alt="Riwayat"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Riwayat
             </a>
             <div class="border-b border-gray-100 my-1"></div>
 
@@ -125,23 +125,7 @@
             </header>
 
             <!-- Form Workspace -->
-            <div class="w-full">
-
-                <!-- Topic Card -->
-                <div
-                    class="bg-white rounded-xl border border-gray-400 shadow-sm p-4 mb-6 flex items-center gap-3 md:gap-4 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">
-                    <div
-                        class="w-[42px] h-[42px] md:w-[50px] md:h-[50px] rounded-full bg-[#4a40ce] flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-box-open text-white text-lg md:text-xl"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-base md:text-lg font-bold text-black mb-0.5">Pengadaan Barang ATK</h2>
-                        <p class="text-gray-500 text-xs md:text-[15px]">ATK</p>
-                    </div>
-                </div>
-
-                <!-- Form Card -->
-                <div class="w-full">
+            
 
     <!-- Topic Card -->
                     <div class="bg-white rounded-xl border border-gray-400 shadow-sm p-4 mb-6 flex items-center gap-3 md:gap-4 transition-all duration-300 hover:scale-[1.01] hover:shadow-md cursor-pointer group">

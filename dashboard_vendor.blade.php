@@ -62,9 +62,9 @@
             <div class="border-b border-gray-100 my-1"></div>
             <a href="{{ route('vendor-riwayat') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 font-bold text-[17px] transition-all duration-200 hover:bg-primary hover:text-white group">
-                <i
-                    class="ph-bold ph-clock-counter-clockwise text-[28px] text-gray-500 group-hover:text-white transition-colors duration-200"></i>
-                <span class="mb-0.5">Riwayat</span>
+                <img src="gambar/riwayat.png" alt="Riwayat"
+                    class="w-7 h-7 object-contain group-hover:brightness-0 group-hover:invert" />
+                Riwayat
             </a>
             <div class="border-b border-gray-100 my-1"></div>
            
